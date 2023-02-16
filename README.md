@@ -2,22 +2,23 @@
 No Thank You
 
 ## About the Project
-
+This is a solo unity project. 
+It is a school project at the moment, but I do not plan to cease development once I've graduated.
 
 ### Built With
-
+UNITY
 
 ## Getting Started
 
 
-## Prerequisites
+# Prerequisites
 
 
-## Installation
+# Installation
 
 
 ## Usage
-
+Good for having fun with
 
 ## Roadmap
 
@@ -26,10 +27,10 @@ No Thank You
 
 
 ## License
-
+Yes
 
 ## Contact
-
+No
 
 ## Acknowledgments
 
