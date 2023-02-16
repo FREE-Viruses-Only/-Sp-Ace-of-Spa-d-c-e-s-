@@ -1,5 +1,39 @@
-# Ace-of-Spaces
+# (Sp)ace-of-Spa(d/c)e(s)
 No Thank You
+
+## About the Project
+
+
+### Built With
+
+
+## Getting Started
+
+
+## Prerequisites
+
+
+## Installation
+
+
+## Usage
+
+
+## Roadmap
+
+
+## Contributing
+
+
+## License
+
+
+## Contact
+
+
+## Acknowledgments
+
+
 
 PHASE 0 - POKER
     1. Code poker
@@ -16,5 +50,4 @@ PHASE 1 - ESSENTIALS
     2. AI 2 - Can access items within inventory
            AI (dealer
                 Deals cards, manages bids, administers winnings, looks for foul play
-           AI (Bouncer) 
-                  
+           AI (Bouncer)
