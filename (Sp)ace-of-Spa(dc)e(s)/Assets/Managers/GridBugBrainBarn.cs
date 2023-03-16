@@ -9,9 +9,6 @@ public class GridBugBrainBarn : MonoBehaviour
     [SerializeField] private Tile _tilePrefab;
     [SerializeField] private Transform cam;
 
-    private Dictionary<Vector2, Tile> squiles;
-
-
     void Start()
     {   
 
@@ -29,20 +26,10 @@ public class GridBugBrainBarn : MonoBehaviour
 
 //                var isOffset = ((x + y) % 2 == 1);
 //                spawnedTile.Init(isOffset);
-
-                squiles[new Vector2(x,y)] = spawnedTile;
             }
         }
         cam.transform.position = new Vector3((float)width / 2 - 0.5f, (float)height / 2 - 0.5f, -10);
 
-        GameManager.Instance.ChangeState(GameState.SpawnMan);
-    }
-
-    public Tile GetTileAt(Vector2, pos)
-    {
-        if (squiles.TryGetValue(pos, out var tile))
-        {  return tile; }
-        return null;
     }
 
 }
