@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class ManManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public static UnitManager Instance;
 
-    // Update is called once per frame
-    void Update()
+    void Awake()
     {
-        
+        Instance = this;
     }
 }

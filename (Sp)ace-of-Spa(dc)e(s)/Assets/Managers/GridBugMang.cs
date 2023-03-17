@@ -3,23 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GridBugBrainBarn : MonoBehaviour
+public class GridBugMang : MonoBehaviour
 {
+    public static GridBugMang Instance;
+
     [SerializeField] private int width, height;
     [SerializeField] private Tile _tilePrefab;
     [SerializeField] private Transform cam;
 
-    private Dictionary<Vector2, Tile> squiles;
+    private Dictionary<Vector2, Tile> tiles;
 
-
-    void Start()
-    {   
-
-        GenerateGrid();
+    void Awake()
+    {
+        Instance = this;
     }
 
-    void GenerateGrid()
+    public void GenerateGrid()
     {
+        tiles = new Dictionary<Vector2, Tile>();
         for (int x = 0; x < width; x++)
         {
             for (int y = 0; y < height; y++)
@@ -27,10 +28,11 @@ public class GridBugBrainBarn : MonoBehaviour
                 var spawnedTile = Instantiate(_tilePrefab, new Vector3(x, y), Quaternion.identity);
                 spawnedTile.name = $"Tile {x} {y}";
 
-//                var isOffset = ((x + y) % 2 == 1);
-//                spawnedTile.Init(isOffset);
+                //                var isOffset = ((x + y) % 2 == 1);
+                //                spawnedTile.Init(isOffset);
 
-                squiles[new Vector2(x,y)] = spawnedTile;
+                tiles[new Vector2(x, y)] = spawnedTile;
+
             }
         }
         cam.transform.position = new Vector3((float)width / 2 - 0.5f, (float)height / 2 - 0.5f, -10);
@@ -38,11 +40,12 @@ public class GridBugBrainBarn : MonoBehaviour
         GameManager.Instance.ChangeState(GameState.SpawnMan);
     }
 
-    public Tile GetTileAt(Vector2, pos)
+    public Tile GetTileAtPosition(Vector2 pos)
     {
-        if (squiles.TryGetValue(pos, out var tile))
-        {  return tile; }
-        return null;
-    }
+        if (tiles.TryGetValue(pos, out var tile))
+        {
+            return tile;
+        }
+    } 
 
 }

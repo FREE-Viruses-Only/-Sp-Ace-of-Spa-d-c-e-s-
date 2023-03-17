@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GO : MonoBehaviour
+public class GO : BaseMind
 {
     // Start is called before the first frame update
     void Start()

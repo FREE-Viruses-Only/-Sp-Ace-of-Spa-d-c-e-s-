@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(filename = "New Unit", menuName = "Scriptable Unit")]
+[CreateAssetMenu(filename = "New Unit",menuName = "Scriptable Unit")]
 
 public class ScriptableUnit : ScriptableObject
 {
-    public 
+   
 }
 
 public enum Faction
