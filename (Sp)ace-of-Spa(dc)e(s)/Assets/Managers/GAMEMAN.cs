@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     }
 
     // Start is called before the first frame update
-    public void UpdateGameState(GameState newState)
+    public void ChangeState(GameState newState)
     {
         GameState = newState;
 
@@ -29,14 +29,18 @@ public class GameManager : MonoBehaviour
                 GridManager.Instance.GenerateGrid();
                 break;
             case GameState.SpawnMan:
-
+                UnitManager.Instance.SpawnMan();
                 break;
             case GameState.GridAlt:
+                UnitManager.Instance.GridAlt();
                 break;
             case GameState.GridCalculation:
                 break;
             case GameState.Movement:
                 break;
+            default:
+                throw new
+ArgumentOutOfRangeException(nameof(newState), newState, null);
 
         }
     }

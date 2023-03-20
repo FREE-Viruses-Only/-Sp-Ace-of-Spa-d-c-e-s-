@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random
 
 public class GridBugMang : MonoBehaviour
 {
@@ -31,6 +33,8 @@ public class GridBugMang : MonoBehaviour
                 //                var isOffset = ((x + y) % 2 == 1);
                 //                spawnedTile.Init(isOffset);
 
+                spawnedTile.Init(x, y);
+                
                 tiles[new Vector2(x, y)] = spawnedTile;
 
             }
@@ -39,6 +43,15 @@ public class GridBugMang : MonoBehaviour
 
         GameManager.Instance.ChangeState(GameState.SpawnMan);
     }
+
+    public Tile GetManSpawnTile()
+    {
+        return tiles.Where(t.Value.Walkable).OrderBy(t => Random.value).First().Value;
+        
+
+    }
+
+    
 
     public Tile GetTileAtPosition(Vector2 pos)
     {

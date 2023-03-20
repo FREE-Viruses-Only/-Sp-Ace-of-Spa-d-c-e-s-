@@ -9,5 +9,12 @@ public class ManManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
+
+        units = Resources.LoadAll<ScriptableUnit>("Units").ToList();
+    }
+
+    public void SpawnMan()
+    {
+        var manCount = 1;
     }
 }
