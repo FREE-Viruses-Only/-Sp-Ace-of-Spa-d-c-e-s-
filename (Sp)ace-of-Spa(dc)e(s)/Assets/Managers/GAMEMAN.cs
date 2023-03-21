@@ -26,13 +26,13 @@ public class GameManager : MonoBehaviour
         switch (newState)
         {
             case GameState.GenerateGrid:
-                GridManager.Instance.GenerateGrid();
+                GridBugMang.Instance.GenerateGrid();
                 break;
-            case GameState.SpawnMan:
-                UnitManager.Instance.SpawnMan();
+            case GameState.SpawnMEAT:
+                ManManager.Instance.SpawnMan();
                 break;
-            case GameState.GridAlt:
-                UnitManager.Instance.GridAlt();
+            case GameState.SpawnMind:
+                ManManager.Instance.SpawnMind();
                 break;
             case GameState.GridCalculation:
                 break;
@@ -51,8 +51,8 @@ ArgumentOutOfRangeException(nameof(newState), newState, null);
 public enum GameState
 {
     GenerateGrid = 0,
-    SpawnMan = 1,
-    GridAlt = 2,
+    SpawnMEAT = 1,
+    SpawnMind = 2,
     GridCalculation = 3,
     Movement = 4,
 }
