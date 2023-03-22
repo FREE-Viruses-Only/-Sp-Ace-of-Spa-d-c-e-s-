@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Random = UnityEngine.Random
+using Random = UnityEngine.Random;
 
 public class GridBugMang : MonoBehaviour
 {
@@ -46,12 +46,15 @@ public class GridBugMang : MonoBehaviour
 
     public Tile GetManSpawnTile()
     {
-        return tiles.Where(t.Value.Walkable).OrderBy(t => Random.value).First().Value;
+        return tiles.Where(t => t.Key.x < width / 2 && t.Value.Walkable).OrderBy(t => Random.value).First().Value;
         
 
     }
 
-    
+    public Tile GetMindSpawnTile()
+    {
+        return tiles.Where(t => t.Key.x < width / 2 && t.Value.Walkable).OrderBy(t => Random.value).First().Value;
+    }
 
     public Tile GetTileAtPosition(Vector2 pos)
     {
@@ -59,6 +62,7 @@ public class GridBugMang : MonoBehaviour
         {
             return tile;
         }
+        return null;
     } 
 
 }

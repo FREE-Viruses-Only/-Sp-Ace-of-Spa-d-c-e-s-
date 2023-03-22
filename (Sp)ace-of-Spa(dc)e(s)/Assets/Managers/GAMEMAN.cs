@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,13 +23,12 @@ public class GameManager : MonoBehaviour
     public void ChangeState(GameState newState)
     {
         GameState = newState;
-
         switch (newState)
         {
             case GameState.GenerateGrid:
                 GridBugMang.Instance.GenerateGrid();
                 break;
-            case GameState.SpawnMEAT:
+            case GameState.SpawnMan:
                 ManManager.Instance.SpawnMan();
                 break;
             case GameState.SpawnMind:
@@ -51,7 +51,7 @@ ArgumentOutOfRangeException(nameof(newState), newState, null);
 public enum GameState
 {
     GenerateGrid = 0,
-    SpawnMEAT = 1,
+    SpawnMan = 1,
     SpawnMind = 2,
     GridCalculation = 3,
     Movement = 4,

@@ -33,9 +33,9 @@ public class Men : MonoBehaviour
         }
     }
 
-    public void ShowSelectedHero (BaseHero hero)
+    public void ShowSelectedHero (BaseMEAT meat)
     {
-        if (hero == null)
+        if (meat == null)
         {
             selectedMeatObject.SetActive(false);
             return;

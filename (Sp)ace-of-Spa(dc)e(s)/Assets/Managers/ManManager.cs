@@ -18,7 +18,7 @@ public class ManManager : MonoBehaviour
         units = Resources.LoadAll<ScriptableUnit>("Units").ToList();
     }
 
-    public void SpawnMEAT()
+    public void SpawnMan()
     {
         var meatCount = 1;
 
@@ -31,7 +31,7 @@ public class ManManager : MonoBehaviour
             randomSpawnTile.SetUnit(spawnedMEAT);
         }
 
-        GameManager.Instance.ChangeState(GameState.SpawnEnemies);
+        GameManager.Instance.ChangeState(GameState.SpawnMind);
     }
 
     public void SpawnMind()
@@ -47,17 +47,17 @@ public class ManManager : MonoBehaviour
             randomSpawnTile.SetUnit(spawnedMind);
         }
 
-        GameManager.Instance.ChangeState(GameState.
+        GameManager.Instance.ChangeState(GameState.GridCalculation);
     }
 
     private T GetRandomUnit<T>(Faction faction) where T : BaseUnit
     {
-        return (T)units.Where(units => units.Faction == faction).OrderBy(o => Random.value).First().UnitPrefab;
+        return (T)units.Where(u => u.Faction == faction).OrderBy(o => Random.value).First().UnitPrefab;
     }
 
-    public void SetSelectedHero (BaseHero hero)
+    public void SetSelectedHero (BaseMEAT meat)
     {
-        SelectedHero = hero;
-        MenuManager.Instance.ShowSelectedHero(hero);
+        SelectedMEAT = meat;
+        Men.Instance.ShowSelectedHero(meat);
     }
 }
