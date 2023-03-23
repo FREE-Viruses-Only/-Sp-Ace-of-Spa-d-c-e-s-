@@ -55,7 +55,7 @@ public class ManManager : MonoBehaviour
         return (T)units.Where(u => u.Faction == faction).OrderBy(o => Random.value).First().UnitPrefab;
     }
 
-    public void SetSelectedHero (BaseMEAT meat)
+    public void SetSelectedMan (BaseMEAT meat)
     {
         SelectedMEAT = meat;
         Men.Instance.ShowSelectedHero(meat);
