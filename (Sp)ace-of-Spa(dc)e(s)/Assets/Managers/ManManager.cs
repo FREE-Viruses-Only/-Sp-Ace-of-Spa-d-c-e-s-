@@ -9,7 +9,7 @@ public class ManManager : MonoBehaviour
     public static ManManager Instance;
 
     private List<ScriptableUnit> units;
-    public BaseMEAT SelectedMEAT;
+    public BaseMEAT SelectedMan;
 
     void Awake()
     {
@@ -24,9 +24,9 @@ public class ManManager : MonoBehaviour
 
         for (int i = 0; i < meatCount; i++)
         {
-            var randomPrefab = GetRandomUnit<BaseHero>(Faction.Meat);
+            var randomPrefab = GetRandomUnit<BaseMEAT>(Faction.MEAT);
             var spawnedMEAT = Instantiate(randomPrefab);
-            var randomSpawnTile = GridManager.Instance.GetHeroSpawnTile();
+            var randomSpawnTile = GridBugMang.Instance.GetManSpawnTile();
 
             randomSpawnTile.SetUnit(spawnedMEAT);
         }
@@ -40,9 +40,9 @@ public class ManManager : MonoBehaviour
 
         for (int i = 0; i < mindCount; i++)
         {
-            var randomPrefab = GetRandomUnit<BaseMind>(Faction.Mind);
+            var randomPrefab = GetRandomUnit<BaseMind>(Faction.MIND);
             var spawnedMind = Instantiate(randomPrefab);
-            var randomSpawnTile = GridManager.Instance.GetMindSpawnTile();
+            var randomSpawnTile = GridBugMang.Instance.GetMindSpawnTile();
 
             randomSpawnTile.SetUnit(spawnedMind);
         }
@@ -57,7 +57,7 @@ public class ManManager : MonoBehaviour
 
     public void SetSelectedMan (BaseMEAT meat)
     {
-        SelectedMEAT = meat;
+        SelectedMan = meat;
         Men.Instance.ShowSelectedHero(meat);
     }
 }

@@ -41,7 +41,7 @@ public class Men : MonoBehaviour
             return;
         }
 
-        selectedMeatObject.GetComponentInChildren<Text>().text = selectedMeatObject.UnitName;
+        selectedMeatObject.GetComponentInChildren<Text>().text = meat.UnitName;
         selectedMeatObject.SetActive(true);
     }
 }

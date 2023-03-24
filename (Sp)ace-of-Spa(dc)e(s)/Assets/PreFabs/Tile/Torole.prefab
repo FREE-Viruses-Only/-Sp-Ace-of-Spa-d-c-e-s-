@@ -96,13 +96,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3286517934223930244}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58d1df34c3703bb4495e4c82062950fa, type: 3}
+  m_Script: {fileID: 11500000, guid: b2b2a6773e1718948a4a4bc43ef0ac57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseColor: {r: 0.5943396, g: 0.22091489, b: 0.22091489, a: 0}
-  offsetColor: {r: 0.3018868, g: 0.11221074, b: 0.11221074, a: 1}
-  rend: {fileID: 1754939424293259286}
+  TileName: 
+  rend: {fileID: 0}
   highlight: {fileID: 5979550740411076795}
+  isWalkable: 0
+  OccupiedUnit: {fileID: 0}
 --- !u!61 &4534604853836482608
 BoxCollider2D:
   m_ObjectHideFlags: 0
