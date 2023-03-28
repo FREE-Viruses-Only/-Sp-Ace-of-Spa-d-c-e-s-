@@ -13,7 +13,7 @@ public class GridBugMang : MonoBehaviour
     [SerializeField] private Tile _tilePrefab;
     [SerializeField] private Transform cam;
 
-    private Dictionary<Vector2, Tile> tiles;
+    public Dictionary<Vector2, Tile> tiles;
 
     void Awake()
     {
