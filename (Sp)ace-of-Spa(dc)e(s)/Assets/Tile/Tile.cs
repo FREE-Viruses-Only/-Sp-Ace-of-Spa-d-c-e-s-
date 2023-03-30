@@ -12,7 +12,7 @@ public class Tile : MonoBehaviour
     public BaseUnit OccupiedUnit;
     public bool Walkable => isWalkable && OccupiedUnit == null;
 
-    public int quality = 0;
+    public int quality;
 
     public virtual void Init(int x, int y)
     {

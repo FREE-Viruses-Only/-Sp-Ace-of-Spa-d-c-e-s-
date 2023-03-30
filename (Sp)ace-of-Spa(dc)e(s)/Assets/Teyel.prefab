@@ -179,10 +179,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 7560932801367564359}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58d1df34c3703bb4495e4c82062950fa, type: 3}
+  m_Script: {fileID: 11500000, guid: b2b2a6773e1718948a4a4bc43ef0ac57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseColor: {r: 0, g: 0, b: 0, a: 0}
-  offsetColor: {r: 0, g: 0, b: 0, a: 0}
-  rend: {fileID: 0}
+  TileName: 
+  rend: {fileID: 6713484887394278357}
   highlight: {fileID: 1696303739027227512}
+  isWalkable: 1
+  OccupiedUnit: {fileID: 0}
+  quality: 0

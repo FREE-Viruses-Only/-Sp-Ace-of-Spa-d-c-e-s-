@@ -20,7 +20,7 @@ public class ManManager : MonoBehaviour
 
     public void SpawnMan()
     {
-        var meatCount = 1;
+        var meatCount = 5;
 
         for (int i = 0; i < meatCount; i++)
         {
@@ -36,7 +36,7 @@ public class ManManager : MonoBehaviour
 
     public void SpawnMind()
     {
-        var mindCount = 1;
+        var mindCount = 3;
 
         for (int i = 0; i < mindCount; i++)
         {

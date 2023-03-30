@@ -53,7 +53,7 @@ public class GridBugMang : MonoBehaviour
 
     public Tile GetMindSpawnTile()
     {
-        return tiles.Where(t => t.Key.x < width / 2 && t.Value.Walkable).OrderBy(t => Random.value).First().Value;
+        return tiles.Where(t => t.Key.x > width / 2 && t.Value.Walkable).OrderBy(t => Random.value).First().Value;
     }
 
     public Tile GetTileAtPosition(Vector2 pos)

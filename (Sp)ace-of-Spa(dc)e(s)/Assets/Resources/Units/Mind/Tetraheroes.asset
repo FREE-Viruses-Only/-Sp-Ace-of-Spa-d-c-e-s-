@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6637e74c31320324e95cf95704dee8b3, type: 3}
-  m_Name: Meat1
+  m_Name: Tetraheroes
   m_EditorClassIdentifier: 
-  Faction: 0
-  UnitPrefab: {fileID: 8531863857512467964, guid: 52ff900ce0817a049a59b96da4fb6e73, type: 3}
+  Faction: 1
+  UnitPrefab: {fileID: 1977943104889306410, guid: 027146ee562be24429073fdb0ddfc7e0, type: 3}
