@@ -35,8 +35,13 @@ public class GameManager : MonoBehaviour
                 ManManager.Instance.SpawnMind();
                 break;
             case GameState.GridCalculation:
+                GridCalculator.Instance.GridCalculation();
                 break;
-            case GameState.Movement:
+            case GameState.CommenceMovement:
+                Movement.Instance.CommenceMovement();
+                break;
+            case GameState.Liminality:
+                Liminal.Instance.Liminality();
                 break;
             default:
                 throw new
@@ -54,6 +59,7 @@ public enum GameState
     SpawnMan = 1,
     SpawnMind = 2,
     GridCalculation = 3,
-    Movement = 4,
+    CommenceMovement = 4,
+    Liminality = 5,
 }
 

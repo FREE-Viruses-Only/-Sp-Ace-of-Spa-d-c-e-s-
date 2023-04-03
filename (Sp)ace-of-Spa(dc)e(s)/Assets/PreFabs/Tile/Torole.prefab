@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2063276545478284614}
   - component: {fileID: 1754939424293259286}
-  - component: {fileID: 9042423143587890541}
   - component: {fileID: 4534604853836482608}
   m_Layer: 0
   m_Name: Torole
@@ -87,23 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &9042423143587890541
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3286517934223930244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2b2a6773e1718948a4a4bc43ef0ac57, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TileName: 
-  rend: {fileID: 0}
-  highlight: {fileID: 5979550740411076795}
-  isWalkable: 0
-  OccupiedUnit: {fileID: 0}
 --- !u!61 &4534604853836482608
 BoxCollider2D:
   m_ObjectHideFlags: 0

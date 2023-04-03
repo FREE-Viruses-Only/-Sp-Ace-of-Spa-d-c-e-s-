@@ -11,6 +11,8 @@ public class GridBugMang : MonoBehaviour
 
     [SerializeField] private int width, height;
     [SerializeField] private Tile _tilePrefab;
+    [SerializeField] private Tile _tileEntrance;
+    [SerializeField] private Tile _tileExit;
     [SerializeField] private Transform cam;
 
     public Dictionary<Vector2, Tile> tiles;
@@ -40,6 +42,16 @@ public class GridBugMang : MonoBehaviour
             }
         }
         cam.transform.position = new Vector3((float)width / 2 - 0.5f, (float)height / 2 - 0.5f, -10);
+
+        var entrance = Instantiate(_tileEntrance, new Vector3(-1, height - 1), Quaternion.identity);
+        entrance.name = "Entrance";
+        entrance.Init(-1, height - 1);
+        tiles[new Vector2(-1, height - 1)] = entrance;
+
+        var exit = Instantiate(_tileExit, new Vector3(width, 0), Quaternion.identity);
+        exit.name = "Exit";
+        exit.Init(width, 0);
+        tiles[new Vector2(width, 0)] = exit;
 
         GameManager.Instance.ChangeState(GameState.SpawnMan);
     }

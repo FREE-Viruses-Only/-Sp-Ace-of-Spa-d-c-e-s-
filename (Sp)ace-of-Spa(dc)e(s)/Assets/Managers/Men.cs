@@ -7,7 +7,7 @@ public class Men : MonoBehaviour
 {
     public static Men Instance;
 
-    [SerializeField] private GameObject selectedMeatObject, tileObject, tileUnitObject;
+    [SerializeField] private GameObject selectedMeatObject, tileObject, tileUnitObject, timeObject;
 
     void Awake()
     {
@@ -31,6 +31,11 @@ public class Men : MonoBehaviour
             tileUnitObject.GetComponentInChildren<Text>().text = tile.OccupiedUnit.UnitName;
             tileUnitObject.SetActive(true);
         }
+        else
+        {
+            tileUnitObject.GetComponentInChildren<Text>().text = "Empty!";
+            tileUnitObject.SetActive(true);
+        }
     }
 
     public void ShowSelectedHero (BaseMEAT meat)
@@ -43,5 +48,10 @@ public class Men : MonoBehaviour
 
         selectedMeatObject.GetComponentInChildren<Text>().text = meat.UnitName;
         selectedMeatObject.SetActive(true);
+    }
+
+    public void OneMomentHasPassed(int time)
+    {
+        timeObject.GetComponentInChildren<Text>().text = time.ToString();
     }
 }

@@ -33,7 +33,7 @@ public class Tile : MonoBehaviour
 
     void OnMouseDown()
     {
-        if (GameManager.Instance.GameState != GameState.GridCalculation) return;
+        if (GameManager.Instance.GameState != GameState.Liminality) return;
 
         if (OccupiedUnit != null)
         {
@@ -53,7 +53,7 @@ public class Tile : MonoBehaviour
         }
         else
         {
-            if (ManManager.Instance.SelectedMan != null)
+            if (ManManager.Instance.SelectedMan != null && isWalkable)
             {
                 SetUnit(ManManager.Instance.SelectedMan);
                 ManManager.Instance.SetSelectedMan(null);

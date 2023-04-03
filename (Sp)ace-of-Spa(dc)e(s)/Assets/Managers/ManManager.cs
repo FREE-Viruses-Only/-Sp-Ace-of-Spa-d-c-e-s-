@@ -11,6 +11,8 @@ public class ManManager : MonoBehaviour
     private List<ScriptableUnit> units;
     public BaseMEAT SelectedMan;
 
+   //Random rnd = new Random();
+
     void Awake()
     {
         Instance = this;
@@ -27,7 +29,10 @@ public class ManManager : MonoBehaviour
             var randomPrefab = GetRandomUnit<BaseMEAT>(Faction.MEAT);
             var spawnedMEAT = Instantiate(randomPrefab);
             var randomSpawnTile = GridBugMang.Instance.GetManSpawnTile();
-
+            spawnedMEAT.tetraNeed = Random.Range(0,10);
+            spawnedMEAT.ballerNeed = Random.Range(0,10);
+            spawnedMEAT.exitNeed = Random.Range(0,50);
+            
             randomSpawnTile.SetUnit(spawnedMEAT);
         }
 
