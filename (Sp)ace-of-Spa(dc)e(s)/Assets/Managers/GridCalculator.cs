@@ -9,21 +9,40 @@ public class GridCalculator : MonoBehaviour
 
     public static GridCalculator Instance;
 
+    [SerializeField] private float QualCap;
+
+    [SerializeField]
+    private float testAddQAmount;
+
+    [SerializeField]
+    private float QFallOff;
+
+
+    [SerializeField]
+    private int testQRadius;
+
+    [SerializeField]
+    private float reduceAmount;
 
     void Awake()
     {
         Instance = this;
     }
 
-    public void GridCalculation()
+    public void Advertize()
     {
-//        for (int i = 0; i < tiles.length; i++)
-        {
-//            tiles.Where(t => t.quality != 0).OrderBy(t => Random.value).First().Value;
+            
+            
+                foreach(BaseMind Machine in ManManager.Instance.machines)
+                {
+                    Machine.AdvertizeEngague();
+                }
 
-        }
+
+              
 
         GameManager.Instance.ChangeState(GameState.CommenceMovement);
+    
 
     }
 }

@@ -17,11 +17,23 @@ public class TimeKingdom : MonoBehaviour
     {
         time += 1;
         Men.Instance.OneMomentHasPassed(time);
+
+        foreach (BaseMEAT Man in ManManager.Instance.patrons)
+        {
+            Man.ManTimeUpdate();
+        }
+
+        GameManager.Instance.ChangeState(GameState.Advertize);
+
     }
 
     public void OnButtonPress()
     {
-        TimeHasPassed();
+        if (GameManager.Instance.GameState == GameState.Liminality)
+        {
+            TimeHasPassed();
+        }
+
     }
 
 }

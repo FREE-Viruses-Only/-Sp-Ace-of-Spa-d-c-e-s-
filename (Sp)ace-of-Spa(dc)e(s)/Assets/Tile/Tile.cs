@@ -5,6 +5,10 @@ using UnityEngine;
 public class Tile : MonoBehaviour
 {
     public string TileName;
+    public int Ballerage;
+    public int Tetrahedronage;
+    public int Exitage;
+
     [SerializeField] protected SpriteRenderer rend;
     [SerializeField] private GameObject highlight;
     [SerializeField] private bool isWalkable;

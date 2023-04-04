@@ -8,7 +8,12 @@ public class ManManager : MonoBehaviour
 {
     public static ManManager Instance;
 
-    private List<ScriptableUnit> units;
+    public List<ScriptableUnit> units;
+
+    public List<BaseMEAT> patrons;
+
+    public List<BaseMind> machines;
+
     public BaseMEAT SelectedMan;
 
    //Random rnd = new Random();
@@ -18,6 +23,12 @@ public class ManManager : MonoBehaviour
         Instance = this;
 
         units = Resources.LoadAll<ScriptableUnit>("Units").ToList();
+
+    }
+
+    public List<BaseMEAT> GetPatrons()
+    {
+        return patrons;
     }
 
     public void SpawnMan()
@@ -31,9 +42,13 @@ public class ManManager : MonoBehaviour
             var randomSpawnTile = GridBugMang.Instance.GetManSpawnTile();
             spawnedMEAT.tetraNeed = Random.Range(0,10);
             spawnedMEAT.ballerNeed = Random.Range(0,10);
-            spawnedMEAT.exitNeed = Random.Range(0,50);
-            
+            spawnedMEAT.exitNeed = Random.Range(0,15);
+            spawnedMEAT.moners = Random.Range(1,100);
+
+
             randomSpawnTile.SetUnit(spawnedMEAT);
+
+            patrons.Add(spawnedMEAT);
         }
 
         GameManager.Instance.ChangeState(GameState.SpawnMind);
@@ -50,9 +65,12 @@ public class ManManager : MonoBehaviour
             var randomSpawnTile = GridBugMang.Instance.GetMindSpawnTile();
 
             randomSpawnTile.SetUnit(spawnedMind);
+
+            machines.Add(spawnedMind);
+
         }
 
-        GameManager.Instance.ChangeState(GameState.GridCalculation);
+        GameManager.Instance.ChangeState(GameState.Advertize);
     }
 
     private T GetRandomUnit<T>(Faction faction) where T : BaseUnit

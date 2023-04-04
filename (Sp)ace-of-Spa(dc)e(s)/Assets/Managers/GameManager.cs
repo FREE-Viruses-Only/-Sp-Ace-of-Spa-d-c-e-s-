@@ -34,8 +34,8 @@ public class GameManager : MonoBehaviour
             case GameState.SpawnMind:
                 ManManager.Instance.SpawnMind();
                 break;
-            case GameState.GridCalculation:
-                GridCalculator.Instance.GridCalculation();
+            case GameState.Advertize:
+                GridCalculator.Instance.Advertize();
                 break;
             case GameState.CommenceMovement:
                 Movement.Instance.CommenceMovement();
@@ -58,7 +58,7 @@ public enum GameState
     GenerateGrid = 0,
     SpawnMan = 1,
     SpawnMind = 2,
-    GridCalculation = 3,
+    Advertize = 3,
     CommenceMovement = 4,
     Liminality = 5,
 }

@@ -9,7 +9,7 @@ public class GridBugMang : MonoBehaviour
 {
     public static GridBugMang Instance;
 
-    [SerializeField] private int width, height;
+    [SerializeField] public int width, height;
     [SerializeField] private Tile _tilePrefab;
     [SerializeField] private Tile _tileEntrance;
     [SerializeField] private Tile _tileExit;

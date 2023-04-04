@@ -100,3 +100,5 @@ MonoBehaviour:
   UnitName: Mad Max Balling Road
   OccupiedTile: {fileID: 0}
   Faction: 1
+  RecieverGame: {fileID: 0}
+  range: 0
