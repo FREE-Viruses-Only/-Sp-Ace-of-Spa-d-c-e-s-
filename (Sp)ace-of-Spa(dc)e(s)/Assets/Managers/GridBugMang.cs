@@ -16,6 +16,7 @@ public class GridBugMang : MonoBehaviour
     [SerializeField] private Transform cam;
 
     public Dictionary<Vector2, Tile> tiles;
+    public List<Tile> tyles;
 
     void Awake()
     {
@@ -38,6 +39,7 @@ public class GridBugMang : MonoBehaviour
                 spawnedTile.Init(x, y);
                 
                 tiles[new Vector2(x, y)] = spawnedTile;
+                tyles.Add(spawnedTile);
 
             }
         }
@@ -76,5 +78,13 @@ public class GridBugMang : MonoBehaviour
         }
         return null;
     } 
+
+    public void Reset()
+    {
+        foreach (Tile tile in tyles)
+        {
+            tile.quality = 0;
+        }
+    }
 
 }

@@ -23,45 +23,84 @@ public class BaseMEAT : BaseUnit
     public void ManTileQualCheck()
     {
         Vector3 sexVal = this.transform.position;
+        int stack = 0;
+        int wunk = 0;
+        int bunk = 0;
+        int Nwunk = 0;
+        int Ewunk = 0;
+        int Swunk = 0;
+        int Wwunk = 0;
 
         Tile North = Grab(new Vector2(sexVal.x, sexVal.y + 1));
-        Tile East = Grab(new Vector2(sexVal.x + 1, sexVal.y));
-        Tile South = Grab(new Vector2(sexVal.x, sexVal.y - 1));
+        if (North != null)
+        {
+            North.quality = (North.Tetrahedronage * this.tetraNeed) + (North.Ballerage * this.ballerNeed);
+            North.quality = 0;
+
+            stack += North.quality;
+            Nwunk = North.quality;
+        }
+
+
         Tile West = Grab(new Vector2(sexVal.x - 1, sexVal.y));
+        if (West != null)
+        {
+            West.quality = 0;
+            West.quality = (West.Tetrahedronage * this.tetraNeed) + (West.Ballerage * this.ballerNeed);
 
-        North.quality = 0;
-        East.quality = 0;
-        South.quality = 0;
-        West.quality = 0;
+            stack += West.quality;
+            Wwunk = West.quality;
+        }
 
-        North.quality = (North.Tetrahedronage * this.tetraNeed) + (North.Ballerage * this.ballerNeed);
-        East.quality = (East.Tetrahedronage * this.tetraNeed) + (East.Ballerage * this.ballerNeed);
-        South.quality = (South.Tetrahedronage * this.tetraNeed) + (South.Ballerage * this.ballerNeed);
-        West.quality = (West.Tetrahedronage * this.tetraNeed) + (West.Ballerage * this.ballerNeed);
 
-        int stack = North.quality + East.quality + South.quality + West.quality;
+        Tile South = Grab(new Vector2(sexVal.x, sexVal.y - 1));
+        if(South != null)
+        {
+            South.quality = 0;
+            South.quality = (South.Tetrahedronage * this.tetraNeed) + (South.Ballerage * this.ballerNeed);
+
+            stack += South.quality;
+            Swunk = South.quality;
+        }
+
+
+
+        Tile East = Grab(new Vector2(sexVal.x + 1, sexVal.y));
+        if (East != null)
+        {
+            East.quality = 0;
+            East.quality = (East.Tetrahedronage * this.tetraNeed) + (East.Ballerage * this.ballerNeed);
+
+            stack += East.quality;
+            Ewunk = East.quality;
+        }
+
+
+
+//        int stack = North.quality + West.quality + South.quality + East.quality;
         int This = Random.Range(0, stack);
 
         
 
-        if (This < North.quality)
+        if (This < Nwunk)
         {
             THISONE = North;
         }   
-        else if (This < North.quality + East.quality)
+        else if (This > Nwunk && This < Nwunk + Wwunk)
         {
-            THISONE = East;
+            THISONE = West;
         }
-        else if (This < North.quality + East.quality + South.quality)
+        else if (This > Nwunk + Wwunk && This < Nwunk + Wwunk + Swunk)
         {
             THISONE = South;
         }
         else
         {
-            THISONE = West;
+            THISONE = East;
         }
 
-        THISONE.SetUnit(this)
+        THISONE.SetUnit(this);
+        GridBugMang.Instance.Reset();
 
     }
 

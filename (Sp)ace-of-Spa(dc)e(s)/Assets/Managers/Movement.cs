@@ -8,7 +8,6 @@ public class Movement : MonoBehaviour
 {
     public static Movement Instance;
 
-
     void Awake()
     {
         Instance = this;
@@ -16,9 +15,14 @@ public class Movement : MonoBehaviour
 
     public void CommenceMovement()
     {
-        {
+        GridBugMang.Instance.Reset();
 
+        foreach(BaseMEAT patron in ManManager.Instance.patrons)
+        {
+            patron.ManTileQualCheck();
         }
+
+        
 
         GameManager.Instance.ChangeState(GameState.Liminality);
 
