@@ -32,10 +32,10 @@ public class BaseMEAT : BaseUnit
         int Wwunk = 0;
 
         Tile North = Grab(new Vector2(sexVal.x, sexVal.y + 1));
-        if (North != null)
+        if (North != null && North.Walkable == true)
         {
-            North.quality = (North.Tetrahedronage * this.tetraNeed) + (North.Ballerage * this.ballerNeed);
             North.quality = 0;
+            North.quality = (North.Tetrahedronage * this.tetraNeed) + (North.Ballerage * this.ballerNeed);
 
             stack += North.quality;
             Nwunk = North.quality;
@@ -43,7 +43,7 @@ public class BaseMEAT : BaseUnit
 
 
         Tile West = Grab(new Vector2(sexVal.x - 1, sexVal.y));
-        if (West != null)
+        if (West != null && West.Walkable == true)
         {
             West.quality = 0;
             West.quality = (West.Tetrahedronage * this.tetraNeed) + (West.Ballerage * this.ballerNeed);
@@ -54,7 +54,7 @@ public class BaseMEAT : BaseUnit
 
 
         Tile South = Grab(new Vector2(sexVal.x, sexVal.y - 1));
-        if(South != null)
+        if(South != null && South.Walkable == true)
         {
             South.quality = 0;
             South.quality = (South.Tetrahedronage * this.tetraNeed) + (South.Ballerage * this.ballerNeed);
@@ -66,7 +66,7 @@ public class BaseMEAT : BaseUnit
 
 
         Tile East = Grab(new Vector2(sexVal.x + 1, sexVal.y));
-        if (East != null)
+        if (East != null && East.Walkable == true)
         {
             East.quality = 0;
             East.quality = (East.Tetrahedronage * this.tetraNeed) + (East.Ballerage * this.ballerNeed);
@@ -78,19 +78,19 @@ public class BaseMEAT : BaseUnit
 
 
 //        int stack = North.quality + West.quality + South.quality + East.quality;
-        int This = Random.Range(0, stack);
+        int flip = Random.Range(0, stack);
 
         
 
-        if (This < Nwunk)
+        if (flip < Nwunk)
         {
             THISONE = North;
         }   
-        else if (This > Nwunk && This < Nwunk + Wwunk)
+        else if (flip >= Nwunk && flip < Nwunk + Wwunk)
         {
             THISONE = West;
         }
-        else if (This > Nwunk + Wwunk && This < Nwunk + Wwunk + Swunk)
+        else if (flip >= Nwunk + Wwunk && flip < Nwunk + Wwunk + Swunk)
         {
             THISONE = South;
         }
@@ -100,6 +100,20 @@ public class BaseMEAT : BaseUnit
         }
 
         THISONE.SetUnit(this);
+
+        /*
+        Debug.Log("Gen num" + flip);
+        Debug.Log(stack);
+
+        Debug.Log("North" + Nwunk);
+        Debug.Log(Wwunk);
+        Debug.Log(Swunk);
+        Debug.Log(Ewunk);
+        **/
+
+
+
+
         GridBugMang.Instance.Reset();
 
     }

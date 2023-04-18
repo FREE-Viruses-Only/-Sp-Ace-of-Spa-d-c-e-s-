@@ -1779,11 +1779,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   width: 17
-  height: 5
+  height: 17
   _tilePrefab: {fileID: 6748917913263585353, guid: f123cbe2498932e449774490d940fbf9, type: 3}
   _tileEntrance: {fileID: 5402842104328908138, guid: 825e4194af219b647b8b572342050cc4, type: 3}
   _tileExit: {fileID: -4375657300610900434, guid: 2c2aa5149f459af4caa80b9fd2263d37, type: 3}
   cam: {fileID: 519420032}
+  tyles: []
 --- !u!4 &1635680694
 Transform:
   m_ObjectHideFlags: 0

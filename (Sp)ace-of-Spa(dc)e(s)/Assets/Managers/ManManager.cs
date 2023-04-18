@@ -46,6 +46,7 @@ public class ManManager : MonoBehaviour
             spawnedMEAT.moners = Random.Range(1,100);
 
 
+
             randomSpawnTile.SetUnit(spawnedMEAT);
 
             patrons.Add(spawnedMEAT);
@@ -56,7 +57,7 @@ public class ManManager : MonoBehaviour
 
     public void SpawnMind()
     {
-        var mindCount = 3;
+        var mindCount = 12;
 
         for (int i = 0; i < mindCount; i++)
         {
