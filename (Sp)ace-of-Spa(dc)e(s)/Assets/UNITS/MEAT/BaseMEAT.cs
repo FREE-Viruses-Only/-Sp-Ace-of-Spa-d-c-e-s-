@@ -8,7 +8,15 @@ public class BaseMEAT : BaseUnit
 {
     public int tetraNeed, ballerNeed, exitNeed, moners;
 
+    public int RoulletteWheel;
+
+    public int ThataWay;
+    public int Ceiling;
+
     public Tile THISONE;
+
+    public List<Tile> TileOptions;
+    public List<int> QualBarriers;
 
     public void ManTimeUpdate()
     {
@@ -22,26 +30,47 @@ public class BaseMEAT : BaseUnit
 
     public void ManTileQualCheck()
     {
-        Vector3 sexVal = this.transform.position;
-        int stack = 0;
-        int wunk = 0;
-        int bunk = 0;
-        int Nwunk = 0;
+        Vector3 locVal = this.transform.position;
+        RoulletteWheel = 0;
+        int Nqual = 0;
         int Ewunk = 0;
         int Swunk = 0;
         int Wwunk = 0;
 
-        Tile North = Grab(new Vector2(sexVal.x, sexVal.y + 1));
-        if (North != null && North.Walkable == true)
+        TileOptions = new List<Tile>();
+        TileOptions.Clear();
+        QualBarriers = new List<int>();
+        QualBarriers.Clear();
+
+        Tile North = Grab(new Vector2(locVal.x, locVal.y + 1));
+        Tile East = Grab(new Vector2(locVal.x + 1, locVal.y));
+        Tile South = Grab(new Vector2(locVal.x, locVal.y - 1));
+        Tile West = Grab(new Vector2(locVal.x - 1, locVal.y));
+        Tile Here = Grab(new Vector2(locVal.x, locVal.y));
+
+        TileOptions.Add(North);
+        TileOptions.Add(East);
+        TileOptions.Add(South);
+        TileOptions.Add(West);
+        TileOptions.Add(Here);
+
+
+
+        foreach(Tile CurrentOption in TileOptions)
         {
-            North.quality = 0;
-            North.quality = (North.Tetrahedronage * this.tetraNeed) + (North.Ballerage * this.ballerNeed);
+            if (CurrentOption != null && CurrentOption.Walkable == true)
+            {
+                CurrentOption.quality = 0;
+                CurrentOption.quality = (CurrentOption.Tetrahedronage * this.tetraNeed) + (CurrentOption.Ballerage * this.ballerNeed);
 
-            stack += North.quality;
-            Nwunk = North.quality;
+                RoulletteWheel += CurrentOption.quality;
+    //            CurrentOption.quality;
+                QualBarriers.Add(CurrentOption.quality);
+            }
         }
+        
 
-
+        /*
         Tile West = Grab(new Vector2(sexVal.x - 1, sexVal.y));
         if (West != null && West.Walkable == true)
         {
@@ -74,14 +103,25 @@ public class BaseMEAT : BaseUnit
             stack += East.quality;
             Ewunk = East.quality;
         }
-
+        **/
 
 
 //        int stack = North.quality + West.quality + South.quality + East.quality;
-        int flip = Random.Range(0, stack);
+         
+        ThataWay = Random.Range(0, RoulletteWheel);
 
-        
+        Ceiling = 0;
 
+        foreach(Tile CurrentOption in TileOptions)
+        {
+            Ceiling += CurrentOption.quality;
+            if(ThataWay < Ceiling)
+            {
+                THISONE = CurrentOption;
+            }
+        }
+
+        /*
         if (flip < Nwunk)
         {
             THISONE = North;
@@ -98,6 +138,7 @@ public class BaseMEAT : BaseUnit
         {
             THISONE = East;
         }
+        **/
 
         THISONE.SetUnit(this);
 
