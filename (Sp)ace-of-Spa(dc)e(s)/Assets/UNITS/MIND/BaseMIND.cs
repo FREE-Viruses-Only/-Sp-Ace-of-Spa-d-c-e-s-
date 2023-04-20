@@ -20,7 +20,7 @@ public class BaseMind : BaseUnit
     {
         if(this.UnitName == "Mad Max Balling Road")
         {
-            this.OccupiedTile.Ballerage = 100;
+            this.OccupiedTile.Ballerage = 1000;
 
             //           for(int i = 0; )
             //         RecieverGame = GridBugMang.Instance.GetTileAtPosition(new Vector2(this.OccupiedTile.transform.position.x + 1, this.OccupiedTile.transform.position.y));
@@ -36,7 +36,7 @@ public class BaseMind : BaseUnit
                     if (distanceFromCenter <= range)
                     {
                         Vector2 nextTilePosition = new Vector2(this.OccupiedTile.transform.position.x + x, this.OccupiedTile.transform.position.y + y);
-                        ChangeBasketballQuality(nextTilePosition, (Mathf.Pow(0.7f, distanceFromCenter) * 100));
+                        ChangeBasketballQuality(nextTilePosition, (Mathf.Pow(0.3f, distanceFromCenter) * 1000));
 
                     }
 
@@ -49,7 +49,7 @@ public class BaseMind : BaseUnit
 
         if (this.UnitName == "Tetraheroes")
         {
-            this.OccupiedTile.Tetrahedronage = 100;
+            this.OccupiedTile.Tetrahedronage = 1000;
 
             //           for(int i = 0; )
             //         RecieverGame = GridBugMang.Instance.GetTileAtPosition(new Vector2(this.OccupiedTile.transform.position.x + 1, this.OccupiedTile.transform.position.y));
@@ -65,7 +65,7 @@ public class BaseMind : BaseUnit
                     if (distanceFromCenter <= range)
                     {
                         Vector2 nextTilePosition = new Vector2(this.OccupiedTile.transform.position.x + x, this.OccupiedTile.transform.position.y + y);
-                        ChangeTetQuality(nextTilePosition, (Mathf.Pow(0.7f, distanceFromCenter) * 100));
+                        ChangeTetQuality(nextTilePosition, (Mathf.Pow(0.3f, distanceFromCenter) * 1000));
 
                     }
 

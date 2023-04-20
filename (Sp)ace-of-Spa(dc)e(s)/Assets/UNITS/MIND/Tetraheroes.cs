@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class Tetraheroes : BaseMind
 {
-    // Start is called before the first frame update
-    void Start()
+    public void interact(BaseUnit unit)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        {
+            Debug.Log("Yippee!!!");
+        }
     }
 }

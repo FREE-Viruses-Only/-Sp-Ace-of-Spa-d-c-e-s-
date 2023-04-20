@@ -31,8 +31,15 @@ public class GridCalculator : MonoBehaviour
 
     public void Advertize()
     {
-            
-            
+
+        foreach (Tile tile in GridBugMang.Instance.tyles)
+        {
+            if (tile != null)
+            {
+                tile.Tetrahedronage = 0;
+                tile.Ballerage = 0;
+            }
+        }
                 foreach(BaseMind Machine in ManManager.Instance.machines)
                 {
                     Machine.AdvertizeEngague();

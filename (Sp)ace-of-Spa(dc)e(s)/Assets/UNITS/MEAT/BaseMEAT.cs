@@ -11,7 +11,7 @@ public class BaseMEAT : BaseUnit
     public int RoulletteWheel;
 
     public int ThataWay;
-    public int Ceiling;
+//    public int Ceiling;
 
     public Tile THISONE;
 
@@ -48,20 +48,27 @@ public class BaseMEAT : BaseUnit
         Tile West = Grab(new Vector2(locVal.x - 1, locVal.y));
         Tile Here = Grab(new Vector2(locVal.x, locVal.y));
 
+        Listificate(North);
+        Listificate(East);
+        Listificate(South);
+        Listificate(West);
+        Listificate(Here);
+
+        /*
         TileOptions.Add(North);
         TileOptions.Add(East);
         TileOptions.Add(South);
         TileOptions.Add(West);
         TileOptions.Add(Here);
-
+        **/
 
 
         foreach(Tile CurrentOption in TileOptions)
         {
-            if (CurrentOption != null && CurrentOption.Walkable == true)
+            if (CurrentOption != null && (CurrentOption.Walkable == true || CurrentOption.transform.position == this.transform.position))
             {
                 CurrentOption.quality = 0;
-                CurrentOption.quality = (CurrentOption.Tetrahedronage * this.tetraNeed) + (CurrentOption.Ballerage * this.ballerNeed);
+                CurrentOption.quality = ((this.tetraNeed ^ CurrentOption.Tetrahedronage)) + ((this.ballerNeed ^ CurrentOption.Ballerage));
 
                 RoulletteWheel += CurrentOption.quality;
     //            CurrentOption.quality;
@@ -110,14 +117,15 @@ public class BaseMEAT : BaseUnit
          
         ThataWay = Random.Range(0, RoulletteWheel);
 
-        Ceiling = 0;
+        int Ceiling = 0;
 
         foreach(Tile CurrentOption in TileOptions)
         {
             Ceiling += CurrentOption.quality;
-            if(ThataWay < Ceiling)
+            if(ThataWay <= Ceiling)
             {
                 THISONE = CurrentOption;
+                break;
             }
         }
 
@@ -157,6 +165,14 @@ public class BaseMEAT : BaseUnit
 
         GridBugMang.Instance.Reset();
 
+    }
+
+    public void Listificate(Tile CurrentTile)
+    {
+        if (CurrentTile != null)
+        {
+            TileOptions.Add(CurrentTile);
+        }
     }
 
     public void ManMove()
