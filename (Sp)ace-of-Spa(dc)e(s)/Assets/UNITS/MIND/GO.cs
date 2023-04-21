@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class GO : BaseMind
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void interact(BaseUnit unit)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        {
+            Debug.Log("SLAM!!!");
+            unit.ballerNeed -= 1;
+        }
     }
 }

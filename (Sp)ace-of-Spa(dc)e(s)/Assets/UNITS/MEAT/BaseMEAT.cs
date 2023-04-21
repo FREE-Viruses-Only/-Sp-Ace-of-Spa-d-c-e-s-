@@ -6,8 +6,6 @@ using Random = UnityEngine.Random;
 
 public class BaseMEAT : BaseUnit
 {
-    public int tetraNeed, ballerNeed, exitNeed, moners;
-
     public int RoulletteWheel;
 
     public int ThataWay;
@@ -32,10 +30,13 @@ public class BaseMEAT : BaseUnit
     {
         Vector3 locVal = this.transform.position;
         RoulletteWheel = 0;
+
+        /*
         int Nqual = 0;
         int Ewunk = 0;
         int Swunk = 0;
         int Wwunk = 0;
+        **/
 
         TileOptions = new List<Tile>();
         TileOptions.Clear();
@@ -65,7 +66,7 @@ public class BaseMEAT : BaseUnit
 
         foreach(Tile CurrentOption in TileOptions)
         {
-            if (CurrentOption != null && (CurrentOption.Walkable == true || CurrentOption.transform.position == this.transform.position))
+            if (CurrentOption != null) // && (CurrentOption.Walkable == true || CurrentOption.transform.position == this.transform.position))
             {
                 CurrentOption.quality = 0;
                 CurrentOption.quality = ((this.tetraNeed ^ CurrentOption.Tetrahedronage)) + ((this.ballerNeed ^ CurrentOption.Ballerage));

@@ -7,7 +7,7 @@ using UnityEngine;
 public class Liminal : MonoBehaviour
 {
     public static Liminal Instance;
-    private bool ienumeratorThing = false;
+  //  private bool ienumeratorThing = false;
 
 
     void Awake()

@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class Tetraheroes : BaseMind
 {
-    public void interact(BaseUnit unit)
+    public override void interact(BaseUnit unit)
     {
         {
             Debug.Log("Yippee!!!");
+            unit.tetraNeed -= 1;
         }
     }
 }

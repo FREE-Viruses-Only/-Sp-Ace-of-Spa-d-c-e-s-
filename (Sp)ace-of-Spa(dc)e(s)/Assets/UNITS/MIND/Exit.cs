@@ -4,15 +4,59 @@ using UnityEngine;
 
 public class Exit : Tile
 {
-    // Start is called before the first frame update
-    void Start()
+    public static Exit Instance;
+
+    void Awake()
     {
-        
+        Instance = this;
     }
 
-    // Update is called once per frame
-    void Update()
+    public int range;
+
+    [SerializeField] private Tile TheWayOut;
+
+    private void Bunk()
     {
-        
+        range = GridBugMang.Instance.width;
     }
+
+    public void ExitAdvertize()
+    {
+        TheWayOut.Exitage = 10000;
+
+        //           for(int i = 0; )
+        //         RecieverGame = GridBugMang.Instance.GetTileAtPosition(new Vector2(this.OccupiedTile.transform.position.x + 1, this.OccupiedTile.transform.position.y));
+        //       RecieverGame.Ballerage = 100;
+
+        Bunk();
+
+            for (int x = -range; x <= range; x++)
+            {
+                for (int y = -range; y <= range; y++)
+                {
+                    float distanceFromCenter = Mathf.Abs(x) + Mathf.Abs(y);
+                    if (distanceFromCenter <= range)
+                    {
+                        Vector2 nextTilePosition = new Vector2(TheWayOut.transform.position.x + x, TheWayOut.transform.position.y + y);
+                        ChangeExitQuality(nextTilePosition, (Mathf.Pow(0.49f, distanceFromCenter) * 10000));
+
+                    }
+
+
+                }
+            }
+    }
+
+    private void ChangeExitQuality(Vector2 gridPosition, float changeBy)
+    {
+
+        Tile TileInQuestion = GridBugMang.Instance.GetTileAtPosition(gridPosition);
+        if (TileInQuestion != null)
+        {
+            TileInQuestion.Exitage += (int)changeBy;
+        }
+
+    }
+
+
 }

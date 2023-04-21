@@ -67,10 +67,15 @@ public class Tile : MonoBehaviour
     
     public void SetUnit (BaseUnit unit)
     {
-        if (this == isWalkable)
+        if (this == isWalkable || this.OccupiedUnit == unit)
         {
-            if (unit.OccupiedTile != null) unit.OccupiedTile.OccupiedUnit = null;
+            if (unit.OccupiedTile != null)
+            {
+                unit.OccupiedTile.OccupiedUnit = null;
+                unit.OccupiedTile.isWalkable = true;
+            }
 
+            this.isWalkable = false;
             unit.transform.position = transform.position;
             OccupiedUnit = unit;
             unit.OccupiedTile = this;

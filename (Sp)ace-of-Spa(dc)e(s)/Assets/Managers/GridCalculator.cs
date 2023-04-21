@@ -45,6 +45,8 @@ public class GridCalculator : MonoBehaviour
                     Machine.AdvertizeEngague();
                 }
 
+        Exit.Instance.ExitAdvertize();
+
 
               
 
