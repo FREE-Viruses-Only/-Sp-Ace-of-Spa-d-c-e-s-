@@ -38,6 +38,7 @@ public class GridCalculator : MonoBehaviour
             {
                 tile.Tetrahedronage = 0;
                 tile.Ballerage = 0;
+                tile.Exitage = 0;
             }
         }
                 foreach(BaseMind Machine in ManManager.Instance.machines)

@@ -9,6 +9,7 @@ public class Tetraheroes : BaseMind
         {
             Debug.Log("Yippee!!!");
             unit.tetraNeed -= 1;
+            unit.moners -= 1;
         }
     }
 }

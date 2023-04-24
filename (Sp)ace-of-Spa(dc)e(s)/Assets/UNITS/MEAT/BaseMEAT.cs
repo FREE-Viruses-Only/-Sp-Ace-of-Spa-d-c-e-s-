@@ -69,7 +69,25 @@ public class BaseMEAT : BaseUnit
             if (CurrentOption != null) // && (CurrentOption.Walkable == true || CurrentOption.transform.position == this.transform.position))
             {
                 CurrentOption.quality = 0;
-                CurrentOption.quality = ((this.tetraNeed ^ CurrentOption.Tetrahedronage)) + ((this.ballerNeed ^ CurrentOption.Ballerage));
+
+                if (this.ballerNeed <= 0)
+                {
+                    this.ballerNeed = 0;
+                }
+
+                if (this.tetraNeed <= 0)
+                {
+                    this.ballerNeed = 0;
+                }
+
+                if (this.moners <= 0)
+                {
+                    this.tetraNeed = 0;
+                    this.ballerNeed = 0;
+                    this.exitNeed += 10;
+                }
+
+                CurrentOption.quality = ((this.tetraNeed ^ (CurrentOption.Tetrahedronage ^ 2))) + ((this.ballerNeed ^ (CurrentOption.Ballerage ^ 2))) + ((this.exitNeed ^ (CurrentOption.Exitage ^ 2)));
 
                 RoulletteWheel += CurrentOption.quality;
     //            CurrentOption.quality;

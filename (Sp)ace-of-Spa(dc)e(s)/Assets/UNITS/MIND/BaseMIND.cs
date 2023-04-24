@@ -10,7 +10,7 @@ public class BaseMind : BaseUnit
 
     private void Bunk() 
     {
-           range = GridBugMang.Instance.width;
+           range = GridBugMang.Instance.width*2;
     }
 
 
@@ -36,7 +36,7 @@ public class BaseMind : BaseUnit
                     if (distanceFromCenter <= range)
                     {
                         Vector2 nextTilePosition = new Vector2(this.OccupiedTile.transform.position.x + x, this.OccupiedTile.transform.position.y + y);
-                        ChangeBasketballQuality(nextTilePosition, (Mathf.Pow(0.3f, distanceFromCenter) * 1000));
+                        ChangeBasketballQuality(nextTilePosition, (Mathf.Pow(0.3f, distanceFromCenter) * 10000));
 
                     }
 
@@ -65,7 +65,7 @@ public class BaseMind : BaseUnit
                     if (distanceFromCenter <= range)
                     {
                         Vector2 nextTilePosition = new Vector2(this.OccupiedTile.transform.position.x + x, this.OccupiedTile.transform.position.y + y);
-                        ChangeTetQuality(nextTilePosition, (Mathf.Pow(0.3f, distanceFromCenter) * 1000));
+                        ChangeTetQuality(nextTilePosition, (Mathf.Pow(0.3f, distanceFromCenter) * 10000));
 
                     }
 

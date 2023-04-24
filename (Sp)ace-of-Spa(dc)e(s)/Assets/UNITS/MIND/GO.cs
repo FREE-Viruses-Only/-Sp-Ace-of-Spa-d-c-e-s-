@@ -9,6 +9,7 @@ public class GO : BaseMind
         {
             Debug.Log("SLAM!!!");
             unit.ballerNeed -= 1;
+            unit.moners -= 1;
         }
     }
 }
