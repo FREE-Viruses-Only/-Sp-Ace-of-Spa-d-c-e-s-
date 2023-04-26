@@ -47,7 +47,7 @@ public class ManManager : MonoBehaviour
 
 
 
-            randomSpawnTile.SetUnit(spawnedMEAT);
+            spawnedMEAT.transform.position = randomSpawnTile;
 
             patrons.Add(spawnedMEAT);
         }
@@ -83,5 +83,22 @@ public class ManManager : MonoBehaviour
     {
         SelectedMan = meat;
         Men.Instance.ShowSelectedHero(meat);
+    }
+
+    public void Enter()
+    {
+        var randomPrefab = GetRandomUnit<BaseMEAT>(Faction.MEAT);
+
+        if (randomPrefab.ForReal = false)
+        {
+            var SpawnTile = GridBugMang.Instance.Entrance();
+
+            SpawnTile.SetUnit(randomPrefab);
+
+            randomPrefab.ForReal = true;
+        }
+
+ //       var spawnedMEAT = Instantiate(randomPrefab);
+
     }
 }

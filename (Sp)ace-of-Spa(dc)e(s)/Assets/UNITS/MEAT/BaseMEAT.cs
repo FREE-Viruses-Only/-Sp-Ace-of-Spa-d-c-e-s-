@@ -9,6 +9,8 @@ public class BaseMEAT : BaseUnit
     public int RoulletteWheel;
 
     public int ThataWay;
+
+    public bool ForReal;
 //    public int Ceiling;
 
     public Tile THISONE;
@@ -82,12 +84,13 @@ public class BaseMEAT : BaseUnit
 
                 if (this.moners <= 0)
                 {
+                    this.moners = 0;
                     this.tetraNeed = 0;
                     this.ballerNeed = 0;
                     this.exitNeed += 10;
                 }
 
-                CurrentOption.quality = ((this.tetraNeed ^ (CurrentOption.Tetrahedronage ^ 2))) + ((this.ballerNeed ^ (CurrentOption.Ballerage ^ 2))) + ((this.exitNeed ^ (CurrentOption.Exitage ^ 2)));
+                CurrentOption.quality = ((this.tetraNeed * (CurrentOption.Tetrahedronage ^ 2))) + ((this.ballerNeed * (CurrentOption.Ballerage ^ 2))) + ((this.exitNeed * (CurrentOption.Exitage ^ 2)));
 
                 RoulletteWheel += CurrentOption.quality;
     //            CurrentOption.quality;

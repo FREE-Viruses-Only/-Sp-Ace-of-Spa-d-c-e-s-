@@ -14,6 +14,8 @@ public class GridBugMang : MonoBehaviour
     [SerializeField] private Tile _tileEntrance;
     [SerializeField] private Tile _tileExit;
     [SerializeField] private Transform cam;
+    [SerializeField] private int slide = 0;
+
 
     public Dictionary<Vector2, Tile> tiles;
     public List<Tile> tyles;
@@ -58,16 +60,22 @@ public class GridBugMang : MonoBehaviour
         GameManager.Instance.ChangeState(GameState.SpawnMan);
     }
 
-    public Tile GetManSpawnTile()
+    public Vector2 GetManSpawnTile()
     {
-        return tiles.Where(t => t.Key.x < width / 2 && t.Value.Walkable).OrderBy(t => Random.value).First().Value;
-        
+        slide += 1;
+ //              return tiles.Where(t => t.Key.x < width / 2 && t.Value.Walkable).OrderBy(t => Random.value).First().Value;
+        return new Vector2(slide, height + 2);
 
     }
 
     public Tile GetMindSpawnTile()
     {
         return tiles.Where(t => t.Key.x > width / 2 && t.Value.Walkable).OrderBy(t => Random.value).First().Value;
+    }
+
+    public Tile Entrance()
+    {
+        return tiles.Where(t => t.Key.x == 0 && t.Key.y == height).OrderBy(t => Random.value).First().Value;
     }
 
     public Tile GetTileAtPosition(Vector2 pos)

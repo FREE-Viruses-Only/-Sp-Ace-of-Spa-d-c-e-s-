@@ -7,9 +7,12 @@ public class GO : BaseMind
     public override void interact(BaseUnit unit)
     {
         {
-            Debug.Log("SLAM!!!");
-            unit.ballerNeed -= 1;
-            unit.moners -= 1;
+            if (unit.moners >= 1)
+            {
+                Debug.Log("SLAM!!!");
+                unit.ballerNeed -= 1;
+                unit.moners -= 1;
+            }
         }
     }
 }

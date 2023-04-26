@@ -7,9 +7,12 @@ public class Tetraheroes : BaseMind
     public override void interact(BaseUnit unit)
     {
         {
-            Debug.Log("Yippee!!!");
-            unit.tetraNeed -= 1;
-            unit.moners -= 1;
+            if (unit.moners >= 1)
+            {
+                Debug.Log("Yippee!!!");
+                unit.tetraNeed -= 1;
+                unit.moners -= 1;
+            }
         }
     }
 }
