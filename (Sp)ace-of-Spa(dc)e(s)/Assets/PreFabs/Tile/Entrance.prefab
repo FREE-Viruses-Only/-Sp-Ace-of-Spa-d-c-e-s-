@@ -84,9 +84,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TileName: Entrance
+  Ballerage: 0
+  Tetrahedronage: 0
+  Exitage: 0
   rend: {fileID: 188154642446008802}
   highlight: {fileID: 5205343178158348623}
   isWalkable: 0
+  absoluteUniteracctivity: 1
   OccupiedUnit: {fileID: 0}
   quality: 0
 --- !u!1 &5205343178158348623 stripped

@@ -7,6 +7,7 @@ public class BaseUnit: MonoBehaviour
     public string UnitName;
     public Tile OccupiedTile;
     public Faction Faction;
+    public bool IsReal;
 
     public int tetraNeed, ballerNeed, exitNeed, moners;
 

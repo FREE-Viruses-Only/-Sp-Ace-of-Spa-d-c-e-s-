@@ -70,12 +70,12 @@ public class GridBugMang : MonoBehaviour
 
     public Tile GetMindSpawnTile()
     {
-        return tiles.Where(t => t.Key.x > width / 2 && t.Value.Walkable).OrderBy(t => Random.value).First().Value;
+        return tiles.Where(t => t.Key.x >= 3 && t.Key.x < width - 1 && t.Value.Walkable).OrderBy(t => Random.value).First().Value;
     }
 
     public Tile Entrance()
     {
-        return tiles.Where(t => t.Key.x == 0 && t.Key.y == height).OrderBy(t => Random.value).First().Value;
+        return tiles.Where(t => t.Key.x == 0 && t.Key.y == height - 1).OrderBy(t => Random.value).First().Value;
     }
 
     public Tile GetTileAtPosition(Vector2 pos)

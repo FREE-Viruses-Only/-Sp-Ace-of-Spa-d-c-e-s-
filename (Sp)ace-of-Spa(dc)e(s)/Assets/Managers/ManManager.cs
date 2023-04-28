@@ -33,23 +33,30 @@ public class ManManager : MonoBehaviour
 
     public void SpawnMan()
     {
-        var meatCount = 5;
+        var meatCount = 7;
 
         for (int i = 0; i < meatCount; i++)
         {
             var randomPrefab = GetRandomUnit<BaseMEAT>(Faction.MEAT);
             var spawnedMEAT = Instantiate(randomPrefab);
             var randomSpawnTile = GridBugMang.Instance.GetManSpawnTile();
-            spawnedMEAT.tetraNeed = Random.Range(0,50);
-            spawnedMEAT.ballerNeed = Random.Range(0,50);
+            spawnedMEAT.tetraNeed = Random.Range(0,100);
+            spawnedMEAT.ballerNeed = Random.Range(0,100);
             spawnedMEAT.exitNeed = Random.Range(0,15);
-            spawnedMEAT.moners = Random.Range(1,100);
+            spawnedMEAT.moners = Random.Range(1,1000);
 
 
 
             spawnedMEAT.transform.position = randomSpawnTile;
 
+            spawnedMEAT.IsReal = false;
+
             patrons.Add(spawnedMEAT);
+        }
+
+        foreach (BaseMEAT guy in patrons)
+        {
+            guy.IsReal = false;
         }
 
         GameManager.Instance.ChangeState(GameState.SpawnMind);
@@ -87,15 +94,15 @@ public class ManManager : MonoBehaviour
 
     public void Enter()
     {
-        var randomPrefab = GetRandomUnit<BaseMEAT>(Faction.MEAT);
+        BaseMEAT ThisGuy = patrons[Random.Range(0, patrons.Count)];
 
-        if (randomPrefab.ForReal = false)
+        if (ThisGuy.IsReal == false)
         {
-            var SpawnTile = GridBugMang.Instance.Entrance();
 
-            SpawnTile.SetUnit(randomPrefab);
+            GridBugMang.Instance.Entrance().SetUnit(ThisGuy);
 
-            randomPrefab.ForReal = true;
+            
+            
         }
 
  //       var spawnedMEAT = Instantiate(randomPrefab);

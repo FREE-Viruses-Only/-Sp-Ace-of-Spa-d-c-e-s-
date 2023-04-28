@@ -12,6 +12,7 @@ public class Tile : MonoBehaviour
     [SerializeField] protected SpriteRenderer rend;
     [SerializeField] private GameObject highlight;
     [SerializeField] private bool isWalkable;
+    [SerializeField] public bool absoluteUniteracctivity;
 
     public BaseUnit OccupiedUnit;
     public bool Walkable => isWalkable && OccupiedUnit == null;
@@ -79,6 +80,11 @@ public class Tile : MonoBehaviour
             unit.transform.position = transform.position;
             OccupiedUnit = unit;
             unit.OccupiedTile = this;
+
+            if (unit.IsReal == false)
+            {
+                unit.IsReal = true;
+            }
         }
         else
         {

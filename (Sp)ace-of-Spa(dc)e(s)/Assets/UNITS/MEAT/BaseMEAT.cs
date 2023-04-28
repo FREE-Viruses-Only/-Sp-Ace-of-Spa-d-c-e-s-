@@ -9,8 +9,6 @@ public class BaseMEAT : BaseUnit
     public int RoulletteWheel;
 
     public int ThataWay;
-
-    public bool ForReal;
 //    public int Ceiling;
 
     public Tile THISONE;
@@ -68,7 +66,7 @@ public class BaseMEAT : BaseUnit
 
         foreach(Tile CurrentOption in TileOptions)
         {
-            if (CurrentOption != null) // && (CurrentOption.Walkable == true || CurrentOption.transform.position == this.transform.position))
+            if (CurrentOption != null && CurrentOption.absoluteUniteracctivity == false) // && (CurrentOption.Walkable == true || CurrentOption.transform.position == this.transform.position))
             {
                 CurrentOption.quality = 0;
 
@@ -79,7 +77,7 @@ public class BaseMEAT : BaseUnit
 
                 if (this.tetraNeed <= 0)
                 {
-                    this.ballerNeed = 0;
+                    this.tetraNeed = 0;
                 }
 
                 if (this.moners <= 0)
@@ -169,8 +167,10 @@ public class BaseMEAT : BaseUnit
             THISONE = East;
         }
         **/
-
-        THISONE.SetUnit(this);
+        if (THISONE != null)
+        {
+            THISONE.SetUnit(this);
+        }
 
         /*
         Debug.Log("Gen num" + flip);

@@ -19,10 +19,13 @@ public class Movement : MonoBehaviour
 
         foreach(BaseMEAT patron in ManManager.Instance.patrons)
         {
-            patron.ManTileQualCheck();
+            if (patron.IsReal == true)
+            {
+                patron.ManTileQualCheck();
+            }
         }
 
-        
+        ManManager.Instance.Enter();
 
         GameManager.Instance.ChangeState(GameState.Liminality);
 

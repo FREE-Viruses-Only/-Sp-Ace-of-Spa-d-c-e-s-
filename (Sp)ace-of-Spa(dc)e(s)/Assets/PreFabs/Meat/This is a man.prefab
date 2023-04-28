@@ -291,7 +291,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 9.37, y: 5.16}
+  m_AnchoredPosition: {x: 0, y: 16}
   m_SizeDelta: {x: 1, y: 1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &7394460644949602018
@@ -365,6 +365,12 @@ MonoBehaviour:
   ballerNeed: 0
   exitNeed: 0
   moners: 0
+  RoulletteWheel: 0
+  ThataWay: 0
+  IsReal: 1
+  THISONE: {fileID: 0}
+  TileOptions: []
+  QualBarriers: 
   Baller: {fileID: 634833585789770841}
   Tetra: {fileID: 4532965068799100970}
   Exit: {fileID: 2630192719193183674}
