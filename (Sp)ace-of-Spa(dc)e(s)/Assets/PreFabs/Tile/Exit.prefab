@@ -79,11 +79,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TileName: Exit
+  Ballerage: 0
+  Tetrahedronage: 0
+  Exitage: 0
   rend: {fileID: 2975877916050342481}
   highlight: {fileID: 7200442847335029500}
-  isWalkable: 1
+  isWalkable: 0
+  absoluteUniteracctivity: 0
   OccupiedUnit: {fileID: 0}
   quality: 0
+  range: 0
+  TheWayOut: {fileID: 0}
 --- !u!212 &2975877916050342481 stripped
 SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 1754939424293259286, guid: 07bdb53263106be4ba3b641927bdfbda, type: 3}

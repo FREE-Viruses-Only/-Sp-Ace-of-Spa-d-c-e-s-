@@ -10,6 +10,8 @@ public class ManManager : MonoBehaviour
 
     public List<ScriptableUnit> units;
 
+    public List<BaseUnit> things;
+
     public List<BaseMEAT> patrons;
 
     public List<BaseMind> machines;
@@ -24,6 +26,7 @@ public class ManManager : MonoBehaviour
 
         units = Resources.LoadAll<ScriptableUnit>("Units").ToList();
 
+        things = Resources.LoadAll<BaseUnit>("Things").ToList();
     }
 
     public List<BaseMEAT> GetPatrons()
@@ -46,8 +49,9 @@ public class ManManager : MonoBehaviour
             spawnedMEAT.moners = Random.Range(1,1000);
 
 
-
             spawnedMEAT.transform.position = randomSpawnTile;
+
+            spawnedMEAT.Home = new Vector2(spawnedMEAT.transform.position.x, spawnedMEAT.transform.position.y);
 
             spawnedMEAT.IsReal = false;
 

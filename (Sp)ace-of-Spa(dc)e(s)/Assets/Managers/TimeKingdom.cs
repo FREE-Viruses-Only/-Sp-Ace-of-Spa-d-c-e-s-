@@ -23,6 +23,11 @@ public class TimeKingdom : MonoBehaviour
             Man.ManTimeUpdate();
         }
 
+        foreach (BaseUnit thing in ManManager.Instance.patrons)
+        {
+            thing.update();
+        }
+
         GameManager.Instance.ChangeState(GameState.Advertize);
 
     }

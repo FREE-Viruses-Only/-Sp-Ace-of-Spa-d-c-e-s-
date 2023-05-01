@@ -38,7 +38,7 @@ public class Exit : Tile
                     if (distanceFromCenter <= range)
                     {
                         Vector2 nextTilePosition = new Vector2(this.transform.position.x + x, this.transform.position.y + y);
-                        ChangeExitQuality(nextTilePosition, (Mathf.Pow(0.7f, distanceFromCenter) * 1000));
+                        ChangeExitQuality(nextTilePosition, (Mathf.Pow(0.85f, distanceFromCenter) * 1000));
 
                     }
 

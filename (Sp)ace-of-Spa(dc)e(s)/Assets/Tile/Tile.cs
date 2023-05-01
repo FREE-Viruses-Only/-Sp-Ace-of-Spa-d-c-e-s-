@@ -86,6 +86,10 @@ public class Tile : MonoBehaviour
                 unit.IsReal = true;
             }
         }
+        else if(this.TileName == "Exit")
+        {
+            unit.goHome();
+        }
         else
         {
             this.OccupiedUnit.interact(unit);
