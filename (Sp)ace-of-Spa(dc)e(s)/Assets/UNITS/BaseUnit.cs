@@ -22,4 +22,9 @@ public class BaseUnit: MonoBehaviour
         this.transform.position = Home;
         this.IsReal = false;
     }
+
+    public virtual void update()
+    {
+
+    }
 }
