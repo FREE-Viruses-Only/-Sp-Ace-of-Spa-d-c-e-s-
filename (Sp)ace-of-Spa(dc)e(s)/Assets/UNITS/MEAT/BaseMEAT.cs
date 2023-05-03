@@ -8,8 +8,6 @@ public class BaseMEAT : BaseUnit
 {
     public int RoulletteWheel;
 
-    [SerializeField] public int card;
-
     public int ThataWay;
 //    public int Ceiling;
 

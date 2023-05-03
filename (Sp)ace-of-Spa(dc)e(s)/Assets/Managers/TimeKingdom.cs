@@ -23,7 +23,7 @@ public class TimeKingdom : MonoBehaviour
             Man.ManTimeUpdate();
         }
 
-        foreach (BaseUnit thing in ManManager.Instance.patrons)
+        foreach (BaseUnit thing in ManManager.Instance.things)
         {
             thing.update();
         }

@@ -8,7 +8,12 @@ public class BaseUnit: MonoBehaviour
     public Tile OccupiedTile;
     public Faction Faction;
     public bool IsReal;
+    public bool loser;
     public Vector2 Home;
+
+    public int card;
+
+    public int gumption;
 
     public int tetraNeed, ballerNeed, exitNeed, moners;
 
