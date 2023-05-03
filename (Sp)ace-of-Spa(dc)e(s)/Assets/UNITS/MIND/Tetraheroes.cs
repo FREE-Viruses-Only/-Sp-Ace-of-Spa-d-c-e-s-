@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Tetraheroes : BaseMind
 {
-    private List<BaseUnit> players;
-    private List<BaseUnit> gamers;
+    private List<BaseUnit> players = new List<BaseUnit>();
+    private List<BaseUnit> gamers = new List<BaseUnit>();
     private BaseUnit winner;
     private BaseUnit leader;
     private int moneyPile;
@@ -23,11 +23,6 @@ public class Tetraheroes : BaseMind
     public override void interact(BaseUnit man)
     {
         {
-            if (players == null)
-            {
-                players = new List<BaseUnit>();
-                gamers = new List<BaseUnit>();
-            }
 
             if (man.moners >= 1)
             {
@@ -62,21 +57,23 @@ public class Tetraheroes : BaseMind
             gamers.Add(player);
         }
 
-        if (players.Count == 0)
+        if (players.Count == 1)
         {
             Debug.Log("Im Alone!");
         }
 
-        if (players.Count >= 1)
+        if (players.Count >= 2)
         {
             Debug.Log($"Now we are starting a game with {players.Count} players");
+
+            winner = null;
 
             foreach (BaseUnit speaker in gamers)
             {
                 Debug.Log($"Hallo Im {speaker.UnitName}");
             }
 
-            while (winner = null)
+            
             {
                 foreach (BaseUnit gamer in gamers)
                 {
@@ -112,7 +109,10 @@ public class Tetraheroes : BaseMind
                                 else
                                 {
                                     Debug.Log($"{opponent.UnitName} FOLDS!!!");
-                                    gamers.RemoveAt(windex);///////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                                    opponent.loser = true;
+
+                                    //gamers.RemoveAt(windex);///////////////////////////////////////////////////////////////////////////////////////////////////////
                                 }
 
 
@@ -189,10 +189,13 @@ public class Tetraheroes : BaseMind
         }
         players.Clear();
 
+        if (winner != null )
+        {
+            Debug.Log($"{winner.UnitName} WINNNNNNSSSSSSSSSSSSSS!!!");
+            winner.moners += moneyPile;
 
-        Debug.Log($"{winner.UnitName} WINNNNNNSSSSSSSSSSSSSS!!!");
+        }
 
-        winner.moners += moneyPile;
         moneyPile = 0;
         
     }

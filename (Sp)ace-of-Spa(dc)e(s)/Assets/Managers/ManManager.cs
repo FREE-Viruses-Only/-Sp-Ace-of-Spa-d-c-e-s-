@@ -27,6 +27,9 @@ public class ManManager : MonoBehaviour
         units = Resources.LoadAll<ScriptableUnit>("Units").ToList();
 
         things = Resources.LoadAll<BaseUnit>("Things").ToList();
+
+        Debug.Log($"How many thibngs are in things?? \n The TRUTH ::: {things.Count}");
+
     }
 
     public List<BaseMEAT> GetPatrons()
@@ -81,6 +84,14 @@ public class ManManager : MonoBehaviour
             machines.Add(spawnedMind);
 
         }
+
+        things.AddRange(patrons);
+
+        Debug.Log($"How many thibngs are in things?? \n The TRUTH ::: {things.Count}");
+
+        things.AddRange(machines);
+
+        Debug.Log($"How many thibngs are in things?? \n The TRUTH ::: {things.Count}");
 
         GameManager.Instance.ChangeState(GameState.Advertize);
     }
