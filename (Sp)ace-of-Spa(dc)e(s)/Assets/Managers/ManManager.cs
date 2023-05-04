@@ -18,6 +18,8 @@ public class ManManager : MonoBehaviour
 
     public BaseMEAT SelectedMan;
 
+    private int wunko = 0;
+
    //Random rnd = new Random();
 
     void Awake()
@@ -57,6 +59,12 @@ public class ManManager : MonoBehaviour
             spawnedMEAT.Home = new Vector2(spawnedMEAT.transform.position.x, spawnedMEAT.transform.position.y);
 
             spawnedMEAT.IsReal = false;
+
+            string name = spawnedMEAT.UnitName;
+
+            spawnedMEAT.UnitName = $"{name} {wunko}";
+
+            wunko++;
 
             patrons.Add(spawnedMEAT);
         }

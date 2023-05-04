@@ -11,9 +11,10 @@ public class BaseUnit: MonoBehaviour
     public bool loser;
     public Vector2 Home;
 
-    public int card;
+    public int card, shotCount, shotsMade;
 
-    public int gumption;
+    public int gumption, dexterity;
+    public int gumpMod, dexMod;
 
     public int tetraNeed, ballerNeed, exitNeed, moners;
 

@@ -44,6 +44,7 @@ public class Tetraheroes : BaseMind
 
         gamers.Clear();
 
+
         foreach(BaseUnit player in players)
         {
             int dealt = Random.Range(0, cards.Count);
@@ -60,6 +61,7 @@ public class Tetraheroes : BaseMind
         if (players.Count == 1)
         {
             Debug.Log("Im Alone!");
+            players[0].moners += 1;
         }
 
         if (players.Count >= 2)
@@ -85,7 +87,7 @@ public class Tetraheroes : BaseMind
 
                     Debug.Log($"{gamer.UnitName} here and my gumption is {gamer.gumption}, my card is {gamer.card}, and Im going to raise {raise} moners");
 
-                    if (raise > 0 && gamer.moners >= raise)
+                    if (raise > 0 && gamer.moners >= raise && gamer.loser == false)
                     {
                         moneyPile += raise;
                         gamer.moners -= raise;
@@ -94,7 +96,7 @@ public class Tetraheroes : BaseMind
 
                         foreach (BaseUnit opponent in gamers)
                         {
-                            if (opponent != gamer)
+                            if (opponent != gamer && opponent.loser == false)
                             {
                                 opponent.gumption = Random.Range(0, 16);
 
@@ -136,35 +138,39 @@ public class Tetraheroes : BaseMind
 
                 foreach (BaseUnit maybeWinner in gamers)
                 {
-                    Debug.Log($"{maybeWinner.UnitName} reaveals a {maybeWinner.card}");
-
-                    if (maybeWinner.card > BigestCard)
+                    if (maybeWinner.loser == false)
                     {
-                        BigestCard = maybeWinner.card;
+                        Debug.Log($"{maybeWinner.UnitName} reaveals a {maybeWinner.card}");
 
-                        if (spindex != 0)
+                        if (maybeWinner.card > BigestCard)
                         {
-                            Debug.Log($"{gamers[spindex-1].UnitName} is out! {maybeWinner.card}");
+                            BigestCard = maybeWinner.card;
 
-                            gamers[spindex-1].loser = true;
+                            if (spindex != 0)
+                            {
+                                Debug.Log($"{gamers[spindex - 1].UnitName} is out! {maybeWinner.card}");
 
-                            //gamers.RemoveAt(spindex-1);///////////////////////////////////////////////////////////////////////////////////////////////////////
+                                gamers[spindex - 1].loser = true;
+
+                                //gamers.RemoveAt(spindex-1);///////////////////////////////////////////////////////////////////////////////////////////////////////
+                            }
+
+                            leader = maybeWinner;
+
+                            Debug.Log($"{leader.UnitName} is now leading with a {maybeWinner.card} \n The bigest card is now {BigestCard}");
+
                         }
+                        else
+                        {
+                            Debug.Log($"{maybeWinner.UnitName} Loses \nTheir card: {maybeWinner.card}");
 
-                        leader = maybeWinner;
+                            gamers[spindex].loser = true;
 
-                        Debug.Log($"{leader.UnitName} is now leading with a {maybeWinner.card} \n The bigest card is now {BigestCard}");
+                            //gamers.RemoveAt(spindex);///////////////////////////////////////////////////////////////////////////////////////////////////////
 
+                        }
                     }
-                    else
-                    {
-                        Debug.Log($"{maybeWinner.UnitName} Loses \nTheir card: {maybeWinner.card}");
-
-                        gamers[spindex].loser = true;
-
-                        //gamers.RemoveAt(spindex);///////////////////////////////////////////////////////////////////////////////////////////////////////
-
-                    }
+                    
 
                     spindex++;
                 }
@@ -173,28 +179,30 @@ public class Tetraheroes : BaseMind
 
                 foreach (BaseUnit kicking in gamers)
                 {
-                    if (kicking.loser == true)
+                    if (kicking.loser == false)
                     {
-                        gamers.RemoveAt(spindex);
+                        winner = kicking;
                     }
                     spindex++;
                 }
-
+                /*
                 if (gamers.Count <= 1)
                 {
                     winner = gamers[0];
-                }
+                }*/
+            }
+
+            if (winner != null)
+            {
+                Debug.Log($"{winner.UnitName} WINNNNNNSSSSSSSSSSSSSS!!! \n {moneyPile} moners for this guy!");
+                winner.moners += moneyPile;
+
             }
 
         }
         players.Clear();
 
-        if (winner != null )
-        {
-            Debug.Log($"{winner.UnitName} WINNNNNNSSSSSSSSSSSSSS!!!");
-            winner.moners += moneyPile;
 
-        }
 
         moneyPile = 0;
         
