@@ -52,6 +52,7 @@ public class ManManager : MonoBehaviour
             spawnedMEAT.ballerNeed = Random.Range(0,100);
             spawnedMEAT.exitNeed = Random.Range(0,15);
             spawnedMEAT.moners = Random.Range(1,1000);
+            spawnedMEAT.dexMod = Random.Range(1, 5);
 
 
             spawnedMEAT.transform.position = randomSpawnTile;

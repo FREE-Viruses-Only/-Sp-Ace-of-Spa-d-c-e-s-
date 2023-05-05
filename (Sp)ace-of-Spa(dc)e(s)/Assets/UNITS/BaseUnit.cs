@@ -18,6 +18,12 @@ public class BaseUnit: MonoBehaviour
 
     public int tetraNeed, ballerNeed, exitNeed, moners;
 
+    public int itemsHeld;
+
+    public List<BaseUnit> inventory = new List<BaseUnit>();
+
+    public BaseUnit holder;
+
     public virtual void interact(BaseUnit unit)
     {
         Debug.Log("Woah Now");
@@ -32,5 +38,10 @@ public class BaseUnit: MonoBehaviour
     public virtual void update()
     {
 
+    }
+
+    public void checkDex()
+    {
+        this.dexterity = Random.Range(0, 100) * dexMod;
     }
 }

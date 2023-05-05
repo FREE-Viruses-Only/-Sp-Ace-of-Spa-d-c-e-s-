@@ -47,7 +47,7 @@ public class GO : BaseMind
 
             for (int i = 0; i < 6; i++)
             {
-                ldr.dexterity = Random.Range(0, 100);
+                ldr.checkDex();
 
                 ldr.shotCount += 1;
 
