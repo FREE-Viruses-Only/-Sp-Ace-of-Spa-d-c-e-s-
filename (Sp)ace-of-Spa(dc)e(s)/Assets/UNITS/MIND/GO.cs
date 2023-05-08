@@ -35,45 +35,86 @@ public class GO : BaseMind
 
     public override void update()
     {
-        if(players.Count == 1)
+        if (players.Count > 0)
         {
-            ldr = players[0];
-
-            Debug.Log($"My name is {ldr.UnitName} and here I go!");
-
-            ldr.shotCount = 0;
-            ldr.shotsMade = 0;
-
-
-            for (int i = 0; i < 6; i++)
+            if (players.Count == 1)
             {
-                ldr.checkDex();
+                ldr = players[0];
 
-                ldr.shotCount += 1;
+                Debug.Log($"My name is {ldr.UnitName} and here I go!");
 
-                Debug.Log($"I shoot my {ldr.shotCount} ball!!!");
-
-                if (ldr.dexterity >= 70)
+                for (int i = 0; i < 6; i++)
                 {
-                    ldr.shotsMade += 1;
-                    Debug.Log("BWAAAAAAAA!!!!!");
+                    ldr.checkDex();
+
+                    ldr.shotCount += 1;
+
+                    Debug.Log($"I shoot my {ldr.shotCount} ball!!!");
+
+                    if (ldr.dexterity >= 70)
+                    {
+                        ldr.shotsMade += 1;
+                        Debug.Log("BWAAAAAAAA!!!!!");
+                    }
                 }
+
+                winnings = moneyPile * (ldr.shotsMade / (ldr.shotCount - 4));
             }
 
-            winnings = moneyPile * (shotsMade / (shotCount - 2));
+            if (players.Count >= 2)
+            {
+                Debug.Log("ITS TIME TO JUMP UP AND SLAM!!!");
+
+                for (int i = 0; i < 6; i++)
+                {
+                    Debug.Log($"ROUND {i + 1} GO");
+
+                    foreach (BaseUnit baller in players)
+                    {
+                        baller.checkDex();
+
+                        baller.shotCount += 1;
+
+                        Debug.Log($"{baller.UnitName} shoot thier {baller.shotCount} ball!!!");
+
+                        if (baller.dexterity >= 70)
+                        {
+                            baller.shotsMade += 1;
+                            Debug.Log("BWAAAAAAAA!!!!!");
+                        }
+
+                        if (baller.shotsMade > ldr.shotsMade || ldr == null)
+                        {
+                            ldr = baller;
+
+                            Debug.Log($"{ldr.UnitName} is the new leader0!!");
+                        }
+                    }
+                }
+
+                winnings = moneyPile * (ldr.shotsMade / (ldr.shotCount - 4));
+            }
+
 
             Debug.Log($"I just won {winnings} bazillion moners!!");
 
             ldr.moners += winnings;
 
             moneyPile = 0;
-            shotCount = 0;
-            shotsMade = 0;
-        }
 
-        if(players.Count >= 2)
-        {
-            Debug.Log("This isnt implemented yet!!!");
+            foreach (BaseUnit man in players)
+            {
+                man.shotCount = 0;
+                man.shotsMade = 0;
+            }
+
+
+            ldr = null;
+
+
+
+            players.Clear();
         }
+        
     }
 }
