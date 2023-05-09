@@ -83,7 +83,7 @@ public class GO : BaseMind
                             Debug.Log("BWAAAAAAAA!!!!!");
                         }
 
-                        if (baller.shotsMade > ldr.shotsMade || ldr == null)
+                        if (ldr == null || baller.shotsMade > ldr.shotsMade)
                         {
                             ldr = baller;
 

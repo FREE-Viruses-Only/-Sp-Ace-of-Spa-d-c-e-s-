@@ -8,10 +8,18 @@ public class Men : MonoBehaviour
     public static Men Instance;
 
     [SerializeField] private GameObject selectedMeatObject, tileObject, tileUnitObject, timeObject;
+    public RectTransform dropdownRT;
+    public bool isDropped;
+    public Vector2 dropdownTargetCoordinates;
+    public Vector2 dropdownHome;
+    public float dropdownDistance;
+    public GameObject DropdownMenu;
 
     void Awake()
     {
         Instance = this;
+        dropdownHome = DropdownMenu.transform.position;
+        dropdownTargetCoordinates = new Vector2(dropdownHome.x, dropdownRT.anchoredPosition.y);
     }
 
     public void ShowTileInfo(Tile tile)
@@ -38,7 +46,7 @@ public class Men : MonoBehaviour
         }
     }
 
-    public void ShowSelectedHero (BaseMEAT meat)
+    public void ShowSelectedHero(BaseMEAT meat)
     {
         if (meat == null)
         {
@@ -54,4 +62,27 @@ public class Men : MonoBehaviour
     {
         timeObject.GetComponentInChildren<Text>().text = time.ToString();
     }
+
+    public void DropThisShitDown()
+    {
+        if (isDropped)
+        {
+            // plus 225 for some reason
+            // sets coordinate for the dropdown to goto
+            dropdownTargetCoordinates = dropdownHome;
+            isDropped = false;
+        }
+        else
+        {
+            dropdownTargetCoordinates = new Vector2(dropdownHome.x,-92.515f);
+            isDropped = true;
+        }
+    }
+
+    void Update()
+    {
+        // lerps dropdown towards the coordinate we want it to
+        dropdownRT.anchoredPosition = Vector2.Lerp(dropdownRT.anchoredPosition, new Vector2(dropdownRT.anchoredPosition.x, dropdownTargetCoordinates.y), Time.deltaTime * 8f);
+    }
+
 }

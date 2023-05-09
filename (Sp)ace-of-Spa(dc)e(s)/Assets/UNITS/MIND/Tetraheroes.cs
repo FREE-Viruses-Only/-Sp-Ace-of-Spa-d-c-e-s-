@@ -84,46 +84,49 @@ public class Tetraheroes : BaseMind
                     gamer.gumption = Random.Range(0, 16);
 
                     raise = gamer.card - gamer.gumption;
-
-                    Debug.Log($"{gamer.UnitName} here and my gumption is {gamer.gumption}, my card is {gamer.card}, and Im going to raise {raise} moners");
-
-                    if (raise > 0 && gamer.moners >= raise && gamer.loser == false)
+                    if (gamer.loser == false)
                     {
-                        moneyPile += raise;
-                        gamer.moners -= raise;
+                        Debug.Log($"{gamer.UnitName} here and my gumption is {gamer.gumption}, my card is {gamer.card}, and Im going to raise {raise} moners");
 
-                        int windex = 0;
-
-                        foreach (BaseUnit opponent in gamers)
+                        if (raise > 0 && gamer.moners >= raise && gamer.loser == false)
                         {
-                            if (opponent != gamer && opponent.loser == false)
+                            moneyPile += raise;
+                            gamer.moners -= raise;
+
+                            int windex = 0;
+
+                            foreach (BaseUnit opponent in gamers)
                             {
-                                opponent.gumption = Random.Range(0, 16);
-
-                                if (opponent.card - opponent.gumption >= 0 && opponent.moners >= raise)
+                                if (opponent != gamer && opponent.loser == false)
                                 {
-                                    moneyPile += raise;
-                                    opponent.moners -= raise;
+                                    opponent.gumption = Random.Range(0, 16);
 
-                                    Debug.Log($"{opponent.UnitName} will match with {raise} moners");
+                                    if (opponent.card - opponent.gumption >= 0 && opponent.moners >= raise)
+                                    {
+                                        moneyPile += raise;
+                                        opponent.moners -= raise;
+
+                                        Debug.Log($"{opponent.UnitName} will match with {raise} moners");
+
+                                    }
+                                    else
+                                    {
+                                        Debug.Log($"{opponent.UnitName} FOLDS!!!");
+
+                                        opponent.loser = true;
+
+                                        //gamers.RemoveAt(windex);///////////////////////////////////////////////////////////////////////////////////////////////////////
+                                    }
+
 
                                 }
-                                else
-                                {
-                                    Debug.Log($"{opponent.UnitName} FOLDS!!!");
 
-                                    opponent.loser = true;
-
-                                    //gamers.RemoveAt(windex);///////////////////////////////////////////////////////////////////////////////////////////////////////
-                                }
-
+                                windex++;
 
                             }
-
-                            windex++;
-
                         }
                     }
+                    
 
                 }
 
