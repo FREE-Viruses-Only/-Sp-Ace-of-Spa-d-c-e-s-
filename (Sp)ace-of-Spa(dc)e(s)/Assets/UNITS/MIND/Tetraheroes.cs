@@ -202,7 +202,9 @@ public class Tetraheroes : BaseMind
         }
         players.Clear();
 
+        gamers.Clear();
 
+        winner = null;
 
         moneyPile = 0;
         

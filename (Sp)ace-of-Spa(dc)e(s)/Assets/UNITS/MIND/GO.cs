@@ -96,7 +96,7 @@ public class GO : BaseMind
             }
 
 
-            Debug.Log($"I just won {winnings} bazillion moners!!");
+            Debug.Log($"{ldr.UnitName} just won {winnings} bazillion moners!!");
 
             ldr.moners += winnings;
 
