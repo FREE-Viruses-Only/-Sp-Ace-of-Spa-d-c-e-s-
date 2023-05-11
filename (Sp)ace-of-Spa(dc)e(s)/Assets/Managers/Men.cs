@@ -15,11 +15,31 @@ public class Men : MonoBehaviour
     public float dropdownDistance;
     public GameObject DropdownMenu;
 
+    [SerializeField] private GameObject MenuOpen;
+    [SerializeField] private GameObject menMan;
+    [SerializeField] private GameObject menBaller;
+    [SerializeField] private GameObject menTetra;
+    [SerializeField] private GameObject menWall;
+
+    private List<GameObject> menuBits = new List<GameObject>();
+
+
     void Awake()
     {
         Instance = this;
-        dropdownHome = DropdownMenu.transform.position;
+        dropdownHome = DropdownMenu.GetComponent<RectTransform>().anchoredPosition;
         dropdownTargetCoordinates = new Vector2(dropdownHome.x, dropdownRT.anchoredPosition.y);
+
+        menuBits.Add(MenuOpen);
+        menuBits.Add(menMan);
+        menuBits.Add(menBaller);
+        menuBits.Add(menTetra);
+        menuBits.Add(menWall);
+
+        foreach (GameObject bit in menuBits)
+        {
+            bit.SetActive(false);
+        }
     }
 
     public void ShowTileInfo(Tile tile)
@@ -67,6 +87,12 @@ public class Men : MonoBehaviour
     {
         if (isDropped)
         {
+
+            foreach (GameObject bit in menuBits)
+            {
+                bit.SetActive(false);
+            }
+
             // plus 225 for some reason
             // sets coordinate for the dropdown to goto
             dropdownTargetCoordinates = dropdownHome;
@@ -74,8 +100,19 @@ public class Men : MonoBehaviour
         }
         else
         {
-            dropdownTargetCoordinates = new Vector2(dropdownHome.x,-92.515f);
+            dropdownTargetCoordinates = new Vector2(dropdownHome.x,-160.515f);
             isDropped = true;
+
+            Men.Instance.Invoke("OPENTHECABINET", 1f);
+
+        }
+    }
+
+    public void OPENTHECABINET()
+    {
+        foreach (GameObject bit in menuBits)
+        {
+            bit.SetActive(true);
         }
     }
 
