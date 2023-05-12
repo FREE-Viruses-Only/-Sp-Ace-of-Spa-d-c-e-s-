@@ -40,6 +40,12 @@ public class Tile : MonoBehaviour
     {
         if (GameManager.Instance.GameState != GameState.Liminality) return;
 
+        if (PawnerMan.Instance.pawnerTime)
+        {
+            SetUnit(PawnerMan.Instance.pawnThis);
+            return;
+        }
+
         if (OccupiedUnit != null)
         {
             if (OccupiedUnit.Faction == Faction.MEAT)

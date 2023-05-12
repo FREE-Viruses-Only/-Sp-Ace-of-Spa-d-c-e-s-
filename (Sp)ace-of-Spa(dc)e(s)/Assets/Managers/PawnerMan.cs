@@ -4,10 +4,80 @@ using UnityEngine;
 
 public class PawnerMan : MonoBehaviour
 {
-    public void spawnMan()
-    {
+    public static PawnerMan Instance;
 
+    public bool pawnerTime;
+
+    public BaseUnit pawnThis;
+
+    [SerializeField] private BaseMEAT thisFuckinGuy;
+    [SerializeField] private BaseMind BallerPawner;
+    [SerializeField] private BaseMind TetraPawner;
+    [SerializeField] private BaseMind WallPawner;
+
+    void Awake()
+    {
+        Instance = this;
     }
 
+    public void spawnMenMan()
+    {
+        int wunko = ManManager.Instance.wunko;
+
+        var randomPrefab = thisFuckinGuy;
+        var spawnedMEAT = Instantiate(randomPrefab);
+        var randomSpawnTile = GridBugMang.Instance.GetManSpawnTile();
+        spawnedMEAT.tetraNeed = Random.Range(0, 100);
+        spawnedMEAT.ballerNeed = Random.Range(0, 100);
+        spawnedMEAT.exitNeed = Random.Range(0, 15);
+        spawnedMEAT.moners = Random.Range(1, 1000);
+        spawnedMEAT.dexMod = Random.Range(1, 5);
+
+
+        spawnedMEAT.transform.position = randomSpawnTile;
+
+        spawnedMEAT.Home = new Vector2(spawnedMEAT.transform.position.x, spawnedMEAT.transform.position.y);
+
+        spawnedMEAT.IsReal = false;
+
+        string name = spawnedMEAT.UnitName;
+
+        spawnedMEAT.UnitName = $"{name} {wunko}";
+
+        wunko++;
+
+        ManManager.Instance.patrons.Add(spawnedMEAT);
+    }
+
+    public void spawnMenBaller()
+    {
+        MindPawner(BallerPawner);
+    }
+
+    public void spawnMenTetrahedron()
+    {
+        MindPawner(TetraPawner);
+    }
+
+    public void spawnMenWall()
+    {
+        MindPawner(WallPawner);
+    }
+
+    public void MindPawner(BaseMind pawn)
+    {
+        pawnerTime = true;
+
+
+        var randomPrefab = pawn;
+        var spawnedMind = Instantiate(randomPrefab);
+        //   var randomSpawnTile = GridBugMang.Instance.GetMindSpawnTile();
+
+        // randomSpawnTile.SetUnit(spawnedMind);
+
+        pawnThis = spawnedMind;
+
+        ManManager.Instance.machines.Add(spawnedMind);
+    }
 
 }

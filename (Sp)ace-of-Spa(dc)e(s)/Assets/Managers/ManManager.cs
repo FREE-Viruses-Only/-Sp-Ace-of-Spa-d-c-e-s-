@@ -18,7 +18,7 @@ public class ManManager : MonoBehaviour
 
     public BaseMEAT SelectedMan;
 
-    private int wunko = 0;
+    public int wunko = 0;
 
    //Random rnd = new Random();
 
