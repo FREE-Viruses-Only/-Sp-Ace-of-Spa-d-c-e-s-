@@ -43,6 +43,7 @@ public class Tile : MonoBehaviour
         if (PawnerMan.Instance.pawnerTime)
         {
             SetUnit(PawnerMan.Instance.pawnThis);
+            PawnerMan.Instance.pawnerTime = false;
             return;
         }
 

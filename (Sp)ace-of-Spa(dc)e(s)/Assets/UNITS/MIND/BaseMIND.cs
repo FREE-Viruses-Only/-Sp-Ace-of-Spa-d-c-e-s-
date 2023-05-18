@@ -20,58 +20,63 @@ public class BaseMind : BaseUnit
     {
         if(this.UnitName == "Mad Max Balling Road")
         {
-            this.OccupiedTile.Ballerage = 1000;
-
-            //           for(int i = 0; )
-            //         RecieverGame = GridBugMang.Instance.GetTileAtPosition(new Vector2(this.OccupiedTile.transform.position.x + 1, this.OccupiedTile.transform.position.y));
-            //       RecieverGame.Ballerage = 100;
-
-            Bunk();
-
-            for (int x = -range; x <= range; x++)
+            if (this.OccupiedTile != null)
             {
-                for (int y = -range; y <= range; y++)
+                this.OccupiedTile.Ballerage = 1000;
+
+                //           for(int i = 0; )
+                //         RecieverGame = GridBugMang.Instance.GetTileAtPosition(new Vector2(this.OccupiedTile.transform.position.x + 1, this.OccupiedTile.transform.position.y));
+                //       RecieverGame.Ballerage = 100;
+
+                Bunk();
+
+                for (int x = -range; x <= range; x++)
                 {
-                    float distanceFromCenter = Mathf.Abs(x) + Mathf.Abs(y);
-                    if (distanceFromCenter <= range)
+                    for (int y = -range; y <= range; y++)
                     {
-                        Vector2 nextTilePosition = new Vector2(this.OccupiedTile.transform.position.x + x, this.OccupiedTile.transform.position.y + y);
-                        ChangeBasketballQuality(nextTilePosition, (Mathf.Pow(0.3f, distanceFromCenter) * 1000));
+                        float distanceFromCenter = Mathf.Abs(x) + Mathf.Abs(y);
+                        if (distanceFromCenter <= range)
+                        {
+                            Vector2 nextTilePosition = new Vector2(this.OccupiedTile.transform.position.x + x, this.OccupiedTile.transform.position.y + y);
+                            ChangeBasketballQuality(nextTilePosition, (Mathf.Pow(0.3f, distanceFromCenter) * 1000));
 
+                        }
                     }
-
-
                 }
             }
-
 
         }
 
         if (this.UnitName == "Tetraheroes")
         {
-            this.OccupiedTile.Tetrahedronage = 1000;
-
-            //           for(int i = 0; )
-            //         RecieverGame = GridBugMang.Instance.GetTileAtPosition(new Vector2(this.OccupiedTile.transform.position.x + 1, this.OccupiedTile.transform.position.y));
-            //       RecieverGame.Ballerage = 100;
-
-            Bunk();
-
-            for (int x = -range; x <= range; x++)
+            if (this.OccupiedTile != null)
             {
-                for (int y = -range; y <= range; y++)
+                this.OccupiedTile.Tetrahedronage = 1000;
+
+                //           for(int i = 0; )
+                //         RecieverGame = GridBugMang.Instance.GetTileAtPosition(new Vector2(this.OccupiedTile.transform.position.x + 1, this.OccupiedTile.transform.position.y));
+                //       RecieverGame.Ballerage = 100;
+
+                Bunk();
+
+                for (int x = -range; x <= range; x++)
                 {
-                    float distanceFromCenter = Mathf.Abs(x) + Mathf.Abs(y);
-                    if (distanceFromCenter <= range)
+                    for (int y = -range; y <= range; y++)
                     {
-                        Vector2 nextTilePosition = new Vector2(this.OccupiedTile.transform.position.x + x, this.OccupiedTile.transform.position.y + y);
-                        ChangeTetQuality(nextTilePosition, (Mathf.Pow(0.3f, distanceFromCenter) * 1000));
+                        float distanceFromCenter = Mathf.Abs(x) + Mathf.Abs(y);
+                        if (distanceFromCenter <= range)
+                        {
+                            Vector2 nextTilePosition = new Vector2(this.OccupiedTile.transform.position.x + x, this.OccupiedTile.transform.position.y + y);
+                            ChangeTetQuality(nextTilePosition, (Mathf.Pow(0.3f, distanceFromCenter) * 1000));
+
+                        }
+
 
                     }
-
-
                 }
             }
+            
+                
         }
     }
 
