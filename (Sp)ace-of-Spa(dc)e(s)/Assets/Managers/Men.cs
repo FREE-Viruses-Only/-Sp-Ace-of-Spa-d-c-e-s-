@@ -15,6 +15,13 @@ public class Men : MonoBehaviour
     public float dropdownDistance;
     public GameObject DropdownMenu;
 
+    public RectTransform logRT;
+    public bool isLogDropped;
+    public Vector2 logTargetCoordinates;
+    public Vector2 logHome;
+    public float logDistance;
+    public GameObject Log;
+
     [SerializeField] private GameObject MenuOpen;
     [SerializeField] private GameObject menMan;
     [SerializeField] private GameObject menBaller;
@@ -29,6 +36,9 @@ public class Men : MonoBehaviour
         Instance = this;
         dropdownHome = DropdownMenu.GetComponent<RectTransform>().anchoredPosition;
         dropdownTargetCoordinates = new Vector2(dropdownHome.x, dropdownRT.anchoredPosition.y);
+
+        logHome = Log.GetComponent<RectTransform>().anchoredPosition;
+        logTargetCoordinates = new Vector2(logRT.anchoredPosition.x, logHome.y);
 
         menuBits.Add(MenuOpen);
         menuBits.Add(menMan);
@@ -108,6 +118,26 @@ public class Men : MonoBehaviour
         }
     }
 
+    public void BringThisShitOver()
+    {
+        if (isLogDropped)
+        {
+
+            // plus 225 for some reason
+            // sets coordinate for the dropdown to goto
+            logTargetCoordinates = logHome;
+            isLogDropped = false;
+        }
+        else
+        {
+            logTargetCoordinates = new Vector2(145.515f, logHome.y);
+            isLogDropped = true;
+
+         //   Men.Instance.Invoke("OPENTHECABINET", 1f);
+
+        }
+    }
+
     public void OPENTHECABINET()
     {
         foreach (GameObject bit in menuBits)
@@ -120,6 +150,7 @@ public class Men : MonoBehaviour
     {
         // lerps dropdown towards the coordinate we want it to
         dropdownRT.anchoredPosition = Vector2.Lerp(dropdownRT.anchoredPosition, new Vector2(dropdownRT.anchoredPosition.x, dropdownTargetCoordinates.y), Time.deltaTime * 8f);
+        logRT.anchoredPosition = Vector2.Lerp(logRT.anchoredPosition, new Vector2(logTargetCoordinates.x, logRT.anchoredPosition.y), Time.deltaTime * 8f);
     }
 
 }
