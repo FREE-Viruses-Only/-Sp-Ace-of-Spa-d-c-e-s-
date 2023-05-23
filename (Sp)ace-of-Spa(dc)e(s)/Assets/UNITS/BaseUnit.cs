@@ -26,7 +26,12 @@ public class BaseUnit: MonoBehaviour
 
     public virtual void interact(BaseUnit unit)
     {
-        Debug.Log("Woah Now");
+        log("Woah Now");
+    }
+
+    private void log(string msg)
+    {
+        KingLog.Instance.Log(msg);
     }
 
     public virtual void goHome()

@@ -20,6 +20,12 @@ public class Tetraheroes : BaseMind
     private List<int> cards;
 
 
+    private void log(string msg)
+    {
+        KingLog.Instance.Log(msg);
+    }
+
+
     public override void interact(BaseUnit man)
     {
         {
@@ -28,7 +34,7 @@ public class Tetraheroes : BaseMind
             {
                 players.Add(man);
 
-                Debug.Log("I love TETRAHEROES!!!");
+                log("I love TETRAHEROES!!!");
                 man.moners -= 1;
 
                 moneyPile += 1;
@@ -60,33 +66,33 @@ public class Tetraheroes : BaseMind
 
         if (players.Count == 1)
         {
-            Debug.Log("Im Alone!");
+            log("Im Alone!");
             players[0].moners += 1;
         }
 
         if (players.Count >= 2)
         {
-            Debug.Log($"Now we are starting a game with {players.Count} players");
+            log($"Now we are starting a game with {players.Count} players");
 
             winner = null;
 
             foreach (BaseUnit speaker in gamers)
             {
-                Debug.Log($"Hallo Im {speaker.UnitName}");
+                log($"Hallo Im {speaker.UnitName}");
             }
 
             
             {
                 foreach (BaseUnit gamer in gamers)
                 {
-                    Debug.Log($"{moneyPile} moners are in the money pile");
+                    log($"{moneyPile} moners are in the money pile");
 
                     gamer.gumption = Random.Range(0, 16);
 
                     raise = gamer.card - gamer.gumption;
                     if (gamer.loser == false)
                     {
-                        Debug.Log($"{gamer.UnitName} here and my gumption is {gamer.gumption}, my card is {gamer.card}, and Im going to raise {raise} moners");
+                        log($"{gamer.UnitName} here and my gumption is {gamer.gumption}, my card is {gamer.card}, and Im going to raise {raise} moners");
 
                         if (raise > 0 && gamer.moners >= raise && gamer.loser == false)
                         {
@@ -106,12 +112,12 @@ public class Tetraheroes : BaseMind
                                         moneyPile += raise;
                                         opponent.moners -= raise;
 
-                                        Debug.Log($"{opponent.UnitName} will match with {raise} moners");
+                                        log($"{opponent.UnitName} will match with {raise} moners");
 
                                     }
                                     else
                                     {
-                                        Debug.Log($"{opponent.UnitName} FOLDS!!!");
+                                        log($"{opponent.UnitName} FOLDS!!!");
 
                                         opponent.loser = true;
 
@@ -136,14 +142,14 @@ public class Tetraheroes : BaseMind
 
                 leader = null;
 
-                Debug.Log($"Ok now everyone show your cards \n Biggest card value atm: {BigestCard} \n Spindex atm: {spindex}");
+                log($"Ok now everyone show your cards \n Biggest card value atm: {BigestCard} \n Spindex atm: {spindex}");
 
 
                 foreach (BaseUnit maybeWinner in gamers)
                 {
                     if (maybeWinner.loser == false)
                     {
-                        Debug.Log($"{maybeWinner.UnitName} reaveals a {maybeWinner.card}");
+                        log($"{maybeWinner.UnitName} reaveals a {maybeWinner.card}");
 
                         if (maybeWinner.card > BigestCard)
                         {
@@ -151,7 +157,7 @@ public class Tetraheroes : BaseMind
 
                             if (spindex != 0)
                             {
-                                Debug.Log($"{gamers[spindex - 1].UnitName} is out! {maybeWinner.card}");
+                                log($"{gamers[spindex - 1].UnitName} is out! {maybeWinner.card}");
 
                                 gamers[spindex - 1].loser = true;
 
@@ -160,12 +166,12 @@ public class Tetraheroes : BaseMind
 
                             leader = maybeWinner;
 
-                            Debug.Log($"{leader.UnitName} is now leading with a {maybeWinner.card} \n The bigest card is now {BigestCard}");
+                            log($"{leader.UnitName} is now leading with a {maybeWinner.card} \n The bigest card is now {BigestCard}");
 
                         }
                         else
                         {
-                            Debug.Log($"{maybeWinner.UnitName} Loses \nTheir card: {maybeWinner.card}");
+                            log($"{maybeWinner.UnitName} Loses \nTheir card: {maybeWinner.card}");
 
                             gamers[spindex].loser = true;
 
@@ -197,7 +203,7 @@ public class Tetraheroes : BaseMind
 
             if (winner != null)
             {
-                Debug.Log($"{winner.UnitName} WINNNNNNSSSSSSSSSSSSSS!!! \n {moneyPile} moners for this guy!");
+                log($"{winner.UnitName} WINNNNNNSSSSSSSSSSSSSS!!! \n {moneyPile} moners for this guy!");
                 winner.moners += moneyPile;
 
             }

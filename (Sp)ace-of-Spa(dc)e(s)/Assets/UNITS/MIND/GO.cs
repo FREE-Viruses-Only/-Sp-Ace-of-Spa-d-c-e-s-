@@ -17,6 +17,12 @@ public class GO : BaseMind
 
     public int spindex;
 
+
+    private void log(string msg)
+    {
+        KingLog.Instance.Log(msg);
+    }
+
     public override void interact(BaseUnit man)
     {
         {
@@ -25,7 +31,7 @@ public class GO : BaseMind
             {
                 players.Add(man);
 
-                Debug.Log("I love Slam-m!!!");
+                log("I love Slam-m!!!");
                 man.moners -= 1;
 
                 moneyPile += 1;
@@ -41,7 +47,7 @@ public class GO : BaseMind
             {
                 ldr = players[0];
 
-                Debug.Log($"My name is {ldr.UnitName} and here I go!");
+                log($"My name is {ldr.UnitName} and here I go!");
 
                 for (int i = 0; i < 6; i++)
                 {
@@ -49,12 +55,12 @@ public class GO : BaseMind
 
                     ldr.shotCount += 1;
 
-                    Debug.Log($"I shoot my {ldr.shotCount} ball!!!");
+                    log($"I shoot my {ldr.shotCount} ball!!!");
 
                     if (ldr.dexterity >= 70)
                     {
                         ldr.shotsMade += 1;
-                        Debug.Log("BWAAAAAAAA!!!!!");
+                        log("BWAAAAAAAA!!!!!");
                     }
                 }
 
@@ -63,11 +69,11 @@ public class GO : BaseMind
 
             if (players.Count >= 2)
             {
-                Debug.Log("ITS TIME TO JUMP UP AND SLAM!!!");
+                log("ITS TIME TO JUMP UP AND SLAM!!!");
 
                 for (int i = 0; i < 6; i++)
                 {
-                    Debug.Log($"ROUND {i + 1} GO");
+                    log($"ROUND {i + 1} GO");
 
                     foreach (BaseUnit baller in players)
                     {
@@ -75,19 +81,19 @@ public class GO : BaseMind
 
                         baller.shotCount += 1;
 
-                        Debug.Log($"{baller.UnitName} shoot thier {baller.shotCount} ball!!!");
+                        log($"{baller.UnitName} shoot thier {baller.shotCount} ball!!!");
 
                         if (baller.dexterity >= 70)
                         {
                             baller.shotsMade += 1;
-                            Debug.Log("BWAAAAAAAA!!!!!");
+                            log("BWAAAAAAAA!!!!!");
                         }
 
                         if (ldr == null || baller.shotsMade > ldr.shotsMade)
                         {
                             ldr = baller;
 
-                            Debug.Log($"{ldr.UnitName} is the new leader0!!");
+                            log($"{ldr.UnitName} is the new leader0!!");
                         }
                     }
                 }
@@ -96,7 +102,7 @@ public class GO : BaseMind
             }
 
 
-            Debug.Log($"{ldr.UnitName} just won {winnings} bazillion moners!!");
+            log($"{ldr.UnitName} just won {winnings} bazillion moners!!");
 
             ldr.moners += winnings;
 
