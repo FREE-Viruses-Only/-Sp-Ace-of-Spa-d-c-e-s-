@@ -7,7 +7,7 @@ public class Men : MonoBehaviour
 {
     public static Men Instance;
 
-    [SerializeField] private GameObject selectedMeatObject, tileObject, tileUnitObject, timeObject;
+    [SerializeField] private GameObject selectedMeatObject, display, tileObject, tileUnitObject, timeObject;
     public RectTransform dropdownRT;
     public bool isDropped;
     public Vector2 dropdownTargetCoordinates;
@@ -81,11 +81,15 @@ public class Men : MonoBehaviour
         if (meat == null)
         {
             selectedMeatObject.SetActive(false);
+            display.SetActive(false);
             return;
         }
 
         selectedMeatObject.GetComponentInChildren<Text>().text = meat.UnitName;
         selectedMeatObject.SetActive(true);
+
+        display.GetComponentInChildren<Image>().sprite = meat.GetComponent<SpriteRenderer>().sprite;
+        display.SetActive(true);
     }
 
     public void OneMomentHasPassed(int time)
@@ -145,6 +149,8 @@ public class Men : MonoBehaviour
             bit.SetActive(true);
         }
     }
+
+
 
     void Update()
     {
