@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+
 
 public class Men : MonoBehaviour
 {
@@ -22,6 +24,16 @@ public class Men : MonoBehaviour
     public float logDistance;
     public GameObject Log;
 
+    public RectTransform stanelRT;
+    public bool isStanelDropped;
+    public Vector2 stanelTargetCoordinates;
+    public Vector2 stanelHome;
+    public float stanelDistance;
+    public GameObject stanel;
+    public GameObject stanelTxt;
+    [SerializeField] private TextMeshProUGUI stanelTxtForever;
+
+
     [SerializeField] private GameObject MenuOpen;
     [SerializeField] private GameObject menMan;
     [SerializeField] private GameObject menBaller;
@@ -39,6 +51,9 @@ public class Men : MonoBehaviour
 
         logHome = Log.GetComponent<RectTransform>().anchoredPosition;
         logTargetCoordinates = new Vector2(logRT.anchoredPosition.x, logHome.y);
+
+        stanelHome = stanel.GetComponent<RectTransform>().anchoredPosition;
+        stanelTargetCoordinates = new Vector2(stanelRT.anchoredPosition.x, stanelHome.y);
 
         menuBits.Add(MenuOpen);
         menuBits.Add(menMan);
@@ -82,6 +97,7 @@ public class Men : MonoBehaviour
         {
             selectedMeatObject.SetActive(false);
             display.SetActive(false);
+            stanelTxtForever.text = "...";
             return;
         }
 
@@ -90,6 +106,11 @@ public class Men : MonoBehaviour
 
         display.GetComponentInChildren<Image>().sprite = meat.GetComponent<SpriteRenderer>().sprite;
         display.SetActive(true);
+
+        stanelTxtForever.text = $"MONERS : {meat.moners}  " +
+            $"|  EXIT NEED : {meat.exitNeed}\nTetra Need : {meat.tetraNeed}  |  " +
+            $"Baller Need : {meat.ballerNeed}\nGump Mod : {meat.gumpMod}  |  " +
+            $"Dex Mod : {meat.dexMod}";
     }
 
     public void OneMomentHasPassed(int time)
@@ -142,6 +163,20 @@ public class Men : MonoBehaviour
         }
     }
 
+    public void googleShowMeThisGuysStats()
+    {
+        if (isStanelDropped)
+        {
+            stanelTargetCoordinates = stanelHome;
+            isStanelDropped = false;
+        }
+        else
+        {
+            stanelTargetCoordinates = new Vector2(-345.0f, stanelHome.y);
+            isStanelDropped = true;
+        }
+    }
+
     public void OPENTHECABINET()
     {
         foreach (GameObject bit in menuBits)
@@ -157,6 +192,8 @@ public class Men : MonoBehaviour
         // lerps dropdown towards the coordinate we want it to
         dropdownRT.anchoredPosition = Vector2.Lerp(dropdownRT.anchoredPosition, new Vector2(dropdownRT.anchoredPosition.x, dropdownTargetCoordinates.y), Time.deltaTime * 8f);
         logRT.anchoredPosition = Vector2.Lerp(logRT.anchoredPosition, new Vector2(logTargetCoordinates.x, logRT.anchoredPosition.y), Time.deltaTime * 8f);
+        stanelRT.anchoredPosition = Vector2.Lerp(stanelRT.anchoredPosition, new Vector2(stanelTargetCoordinates.x, stanelRT.anchoredPosition.y), Time.deltaTime * 8f);
+
     }
 
 }
