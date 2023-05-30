@@ -7,15 +7,18 @@ using UnityEngine;
 public class Liminal : MonoBehaviour
 {
     public static Liminal Instance;
+    public bool goMode;
   //  private bool ienumeratorThing = false;
 
 
     void Awake()
     {
         Instance = this;
-    }
 
-    public void Liminality()
+        goMode = false;
+}
+
+public void Liminality()
     {
         /*
         if (!ienumeratorThing)
@@ -23,8 +26,12 @@ public class Liminal : MonoBehaviour
             StartCoroutine(waiter());
         }
         **/
+        if (goMode == true)
+        {
+            TimeKingdom.Instance.Invoke("TimeHasPassed", 0.5f);
+        }
 
-        TimeKingdom.Instance.Invoke("TimeHasPassed", 0.5f);
+        Debug.Log("wort");
     }
     /*
     private IEnumerator waiter()

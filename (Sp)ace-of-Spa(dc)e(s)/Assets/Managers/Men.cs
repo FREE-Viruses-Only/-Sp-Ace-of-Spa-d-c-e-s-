@@ -33,6 +33,13 @@ public class Men : MonoBehaviour
     public GameObject stanelTxt;
     [SerializeField] private TextMeshProUGUI stanelTxtForever;
 
+    public bool timeIsReal;
+    public GameObject timeSwitchSwitch;
+    public Image timeMage;
+    
+    [SerializeField] private TextMeshProUGUI timeDiplay;
+
+    // public var tempColor = image.color;
 
     [SerializeField] private GameObject MenuOpen;
     [SerializeField] private GameObject menMan;
@@ -60,6 +67,9 @@ public class Men : MonoBehaviour
         menuBits.Add(menBaller);
         menuBits.Add(menTetra);
         menuBits.Add(menWall);
+
+        timeMage = timeSwitchSwitch.GetComponent<Image>();
+        var tempColor = timeMage.color;
 
         foreach (GameObject bit in menuBits)
         {
@@ -115,7 +125,7 @@ public class Men : MonoBehaviour
 
     public void OneMomentHasPassed(int time)
     {
-        timeObject.GetComponentInChildren<Text>().text = time.ToString();
+        timeDiplay.text = time.ToString();
     }
 
     public void DropThisShitDown()
@@ -183,6 +193,40 @@ public class Men : MonoBehaviour
         {
             bit.SetActive(true);
         }
+    }
+
+    public void flipTimeSwitch()
+    {
+        var tempColor = timeMage.color;
+
+        if (timeIsReal)
+        {
+       //     timeSwitchSwitch.GetComponentInChildren<Image>().color.a = 1f;
+
+            tempColor.a = 1f;
+            timeMage.color = tempColor;
+
+            Debug.Log("PUNK");
+
+            timeIsReal = false;
+
+
+            Liminal.Instance.goMode = false;
+        }
+        else
+        {
+            //          timeSwitchSwitch.image.color.alpha = 100;
+
+            tempColor.a = 0f;
+            timeMage.color = tempColor;
+
+            timeIsReal = true;
+
+            TimeKingdom.Instance.Invoke("TimeHasPassed", 0.5f);
+
+            Liminal.Instance.goMode = true;
+        }
+
     }
 
 
