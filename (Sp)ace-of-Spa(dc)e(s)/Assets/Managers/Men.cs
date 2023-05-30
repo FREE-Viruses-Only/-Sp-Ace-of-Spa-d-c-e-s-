@@ -33,6 +33,8 @@ public class Men : MonoBehaviour
     public GameObject stanelTxt;
     [SerializeField] private TextMeshProUGUI stanelTxtForever;
 
+    [SerializeField] private TextMeshProUGUI stanelTxtSometimes;
+
     public bool timeIsReal;
     public GameObject timeSwitchSwitch;
     public Image timeMage;
@@ -82,7 +84,7 @@ public class Men : MonoBehaviour
         if (tile == null)
         {
             tileObject.SetActive(false);
-            tileUnitObject.SetActive(false);
+          //  tileUnitObject.SetActive(false);
             return;
         }
 
@@ -91,13 +93,13 @@ public class Men : MonoBehaviour
 
         if (tile.OccupiedUnit)
         {
-            tileUnitObject.GetComponentInChildren<Text>().text = tile.OccupiedUnit.UnitName;
-            tileUnitObject.SetActive(true);
+            stanelTxtSometimes.text = tile.OccupiedUnit.UnitName;
+            //tileUnitObject.SetActive(true);
         }
         else
         {
-            tileUnitObject.GetComponentInChildren<Text>().text = "Empty!";
-            tileUnitObject.SetActive(true);
+            stanelTxtSometimes.text = "Empty!";
+            //tileUnitObject.SetActive(true);
         }
     }
 
