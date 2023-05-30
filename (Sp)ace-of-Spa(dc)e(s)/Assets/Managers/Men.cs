@@ -98,7 +98,7 @@ public class Men : MonoBehaviour
         }
         else
         {
-            stanelTxtSometimes.text = "Empty!";
+            stanelTxtSometimes.text = "~  ~  ~";
             //tileUnitObject.SetActive(true);
         }
     }
