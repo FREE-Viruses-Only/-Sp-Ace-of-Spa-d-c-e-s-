@@ -38,14 +38,18 @@ public class BaseUnit: MonoBehaviour
     {
         this.transform.position = Home;
         this.IsReal = false;
-
+        this.refresh();
     }
 
     public virtual void refresh()
     {
-        this.tetraNeed = Random.Range(0, 100);
-        this.ballerNeed = Random.Range(0, 100);
-        this.exitNeed = Random.Range(0, 15);
+        this.tetraNeed = Random.Range(0, 40);
+        this.ballerNeed = Random.Range(0, 40);
+        this.exitNeed = Random.Range(0, 10);
+        if(this.moners == 0)
+        {
+            this.moners = Random.Range(0, 10);
+        }
         this.moners = Random.Range(1, 1000);
     }
 

@@ -96,7 +96,7 @@ public class Tile : MonoBehaviour
         else if(this.TileName == "Exit")
         {
             unit.goHome();
-
+            
         }
         else
         {

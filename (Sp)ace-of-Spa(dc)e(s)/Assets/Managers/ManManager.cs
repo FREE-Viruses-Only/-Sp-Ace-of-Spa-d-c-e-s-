@@ -48,11 +48,12 @@ public class ManManager : MonoBehaviour
             var randomPrefab = GetRandomUnit<BaseMEAT>(Faction.MEAT);
             var spawnedMEAT = Instantiate(randomPrefab);
             var randomSpawnTile = GridBugMang.Instance.GetManSpawnTile();
-            spawnedMEAT.tetraNeed = Random.Range(0,100);
-            spawnedMEAT.ballerNeed = Random.Range(0,100);
-            spawnedMEAT.exitNeed = Random.Range(0,15);
-            spawnedMEAT.moners = Random.Range(1,1000);
+            spawnedMEAT.tetraNeed = Random.Range(0,40);
+            spawnedMEAT.ballerNeed = Random.Range(0,40);
+            spawnedMEAT.exitNeed = Random.Range(0,10);
+            spawnedMEAT.moners = Random.Range(1,30);
             spawnedMEAT.dexMod = Random.Range(1, 5);
+            spawnedMEAT.gumpMod = Random.Range(1, 5);
 
 
             spawnedMEAT.transform.position = randomSpawnTile;
