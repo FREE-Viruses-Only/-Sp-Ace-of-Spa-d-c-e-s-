@@ -11,8 +11,9 @@ public class Tile : MonoBehaviour
 
     [SerializeField] protected SpriteRenderer rend;
     [SerializeField] private GameObject highlight;
-    [SerializeField] private bool isWalkable;
+    [SerializeField] public bool isWalkable;
     [SerializeField] public bool absoluteUniteracctivity;
+    [SerializeField] public bool proporpisagate;
 
     public BaseUnit OccupiedUnit;
     public bool Walkable => isWalkable && OccupiedUnit == null;
