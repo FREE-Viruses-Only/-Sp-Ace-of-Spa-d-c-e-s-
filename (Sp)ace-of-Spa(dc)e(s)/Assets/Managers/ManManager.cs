@@ -81,7 +81,7 @@ public class ManManager : MonoBehaviour
 
     public void SpawnMind()
     {
-        var mindCount = 12;
+        var mindCount = 3;
 
         for (int i = 0; i < mindCount; i++)
         {

@@ -8,12 +8,15 @@ public class BaseMind : BaseUnit
 
     public int range;
     private Dictionary<Vector2, float> tilesInHand = new Dictionary<Vector2, float>();
+    private Dictionary<Vector2, float> tileOUT = new Dictionary<Vector2, float>();
+    private List<Vector2> keyList = new List<Vector2>();
     public Tile thisTile;
     public Tile propogaeTile;
 
     private void Bunk() 
     {
-           range = GridBugMang.Instance.width*2;
+        range = 3;
+            //GridBugMang.Instance.width*2;
     }
 
 
@@ -47,62 +50,101 @@ public class BaseMind : BaseUnit
                     }
                 }
 */
-                tilesInHand.Add(this.OccupiedTile.transform.position, 0);
-                this.OccupiedTile.proporpisagate = true;
-
-                for (int i = 1; i <= range; i++)
+                if(!tilesInHand.ContainsKey(this.OccupiedTile.transform.position))
                 {
-                    foreach(KeyValuePair<Vector2, float> imLookinAtThisOneRightNow in tilesInHand)
+                    tilesInHand.Add(this.OccupiedTile.transform.position, 0);
+                    this.OccupiedTile.proporpisagate = true;
+                }
+
+                tileOUT = tilesInHand;
+                keyList = new List<Vector2>(this.tilesInHand.Keys);
+
+                if(tilesInHand.Count > 0)
+                {
+                    for (int i = 1; i <= range; i++)
                     {
-                        if(imLookinAtThisOneRightNow.Value >= i - 1)
+
+                        keyList = new List<Vector2>(this.tilesInHand.Keys);
+
+                        for (int index = 0; index < keyList.Count; index++)
                         {
-                            propogaeTile = GridBugMang.Instance.GetTileAtPosition(imLookinAtThisOneRightNow.Key);
-                            thisTile = GridBugMang.Instance.GetTileAtPosition(new Vector2(imLookinAtThisOneRightNow.Key.x + 1, imLookinAtThisOneRightNow.Key.y));
-                            if (thisTile != null && thisTile.isWalkable)
+                            
                             {
-                                if (thisTile.proporpisagate == false)
+                                propogaeTile = GridBugMang.Instance.GetTileAtPosition(keyList[index]);
+
+                                thisTile = GridBugMang.Instance.GetTileAtPosition(new Vector2(keyList[index].x + 1, keyList[index].y));
+
+                                if (thisTile != null && thisTile.isWalkable && !tilesInHand.ContainsKey(thisTile.transform.position))
                                 {
                                     tilesInHand.Add(thisTile.transform.position, i);
                                     ChangeBasketballQuality(thisTile.transform.position, propogaeTile.Ballerage / 2);
-                                    thisTile.proporpisagate = true;
                                 }
+
+                                thisTile = GridBugMang.Instance.GetTileAtPosition(new Vector2(keyList[index].x - 1, keyList[index].y));
+
+                                if (thisTile != null && thisTile.isWalkable && !tilesInHand.ContainsKey(thisTile.transform.position))
+                                {
+                                    tilesInHand.Add(thisTile.transform.position, i);
+                                    ChangeBasketballQuality(thisTile.transform.position, propogaeTile.Ballerage / 2);
+                                }
+
+                                thisTile = GridBugMang.Instance.GetTileAtPosition(new Vector2(keyList[index].x, keyList[index].y + 1));
+
+                                if (thisTile != null && thisTile.isWalkable && !tilesInHand.ContainsKey(thisTile.transform.position))
+                                {
+                                    tilesInHand.Add(thisTile.transform.position, i);
+                                    ChangeBasketballQuality(thisTile.transform.position, propogaeTile.Ballerage / 2);
+                                }
+
+                                thisTile = GridBugMang.Instance.GetTileAtPosition(new Vector2(keyList[index].x, keyList[index].y - 1));
+
+                                if (thisTile != null && thisTile.isWalkable && !tilesInHand.ContainsKey(thisTile.transform.position))
+                                {
+                                    tilesInHand.Add(thisTile.transform.position, i);
+                                    ChangeBasketballQuality(thisTile.transform.position, propogaeTile.Ballerage / 2);
+                                }
+
+
+
+                                /*
+                                thisTile = GridBugMang.Instance.GetTileAtPosition(new Vector2(imLookinAtThisOneRightNow.Key.x - 1, imLookinAtThisOneRightNow.Key.y));
+                                if (thisTile != null && thisTile.isWalkable)
+                                {
+                                    if (thisTile.proporpisagate == false)
+                                    {
+                                        tilesInHand.Add(thisTile.transform.position, i);
+                                        ChangeBasketballQuality(thisTile.transform.position, propogaeTile.Ballerage / 2);
+                                        thisTile.proporpisagate = true;
+                                    }
+                                }
+
+                                thisTile = GridBugMang.Instance.GetTileAtPosition(new Vector2(imLookinAtThisOneRightNow.Key.x, imLookinAtThisOneRightNow.Key.y + 1));
+                                if (thisTile != null && thisTile.isWalkable)
+                                {
+                                    if (thisTile.proporpisagate == false)
+                                    {
+                                        tilesInHand.Add(thisTile.transform.position, i);
+                                        ChangeBasketballQuality(thisTile.transform.position, propogaeTile.Ballerage / 2);
+                                        thisTile.proporpisagate = true;
+                                    }
+                                }
+
+                                thisTile = GridBugMang.Instance.GetTileAtPosition(new Vector2(imLookinAtThisOneRightNow.Key.x + 1, imLookinAtThisOneRightNow.Key.y - 1));
+                                if (thisTile != null && thisTile.isWalkable)
+                                {
+                                    if (thisTile.proporpisagate == false)
+                                    {
+                                        tilesInHand.Add(thisTile.transform.position, i);
+                                        ChangeBasketballQuality(thisTile.transform.position, propogaeTile.Ballerage / 2);
+                                        thisTile.proporpisagate = true;
+                                    }
+                                }
+                                */
                             }
 
-                            thisTile = GridBugMang.Instance.GetTileAtPosition(new Vector2(imLookinAtThisOneRightNow.Key.x - 1, imLookinAtThisOneRightNow.Key.y));
-                            if (thisTile != null && thisTile.isWalkable)
-                            {
-                                if (thisTile.proporpisagate == false)
-                                {
-                                    tilesInHand.Add(thisTile.transform.position, i);
-                                    ChangeBasketballQuality(thisTile.transform.position, propogaeTile.Ballerage / 2);
-                                    thisTile.proporpisagate = true;
-                                }
-                            }
-
-                            thisTile = GridBugMang.Instance.GetTileAtPosition(new Vector2(imLookinAtThisOneRightNow.Key.x, imLookinAtThisOneRightNow.Key.y + 1));
-                            if (thisTile != null && thisTile.isWalkable)
-                            {
-                                if (thisTile.proporpisagate == false)
-                                {
-                                    tilesInHand.Add(thisTile.transform.position, i);
-                                    ChangeBasketballQuality(thisTile.transform.position, propogaeTile.Ballerage / 2);
-                                    thisTile.proporpisagate = true;
-                                }
-                            }
-
-                            thisTile = GridBugMang.Instance.GetTileAtPosition(new Vector2(imLookinAtThisOneRightNow.Key.x + 1, imLookinAtThisOneRightNow.Key.y - 1));
-                            if (thisTile != null && thisTile.isWalkable)
-                            {
-                                if (thisTile.proporpisagate == false)
-                                {
-                                    tilesInHand.Add(thisTile.transform.position, i);
-                                    ChangeBasketballQuality(thisTile.transform.position, propogaeTile.Ballerage / 2);
-                                    thisTile.proporpisagate = true;
-                                }
-                            }
                         }
-                        
                     }
+                
                 }
 
                 foreach (KeyValuePair<Vector2, float> CLEAR in tilesInHand)
