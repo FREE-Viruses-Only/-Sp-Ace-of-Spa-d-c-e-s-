@@ -38,6 +38,10 @@ public class Men : MonoBehaviour
     public bool timeIsReal;
     public GameObject timeSwitchSwitch;
     public Image timeMage;
+
+    public bool explodeMode;
+    public GameObject explodeButon;
+    public Image explimage;
     
     [SerializeField] private TextMeshProUGUI timeDiplay;
 
@@ -229,6 +233,24 @@ public class Men : MonoBehaviour
             Liminal.Instance.goMode = true;
         }
 
+    }
+
+    public void explodeModeButonPress()
+    {
+        var tempColor = explimage.color;
+
+        if (!explodeMode)
+        {
+            tempColor.a = 1f;
+            explodeButon.color = tempColor;
+
+            explodeMode = true
+        }
+        else
+        {
+            tempColor.a = 0f;
+            explimage
+        }
     }
 
 
