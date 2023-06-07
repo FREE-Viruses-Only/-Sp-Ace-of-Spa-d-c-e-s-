@@ -56,8 +56,8 @@ public class BaseMind : BaseUnit
                     this.OccupiedTile.proporpisagate = true;
                 }
 
-                tileOUT = tilesInHand;
-                keyList = new List<Vector2>(this.tilesInHand.Keys);
+              //  tileOUT = tilesInHand;
+               // keyList = new List<Vector2>(this.tilesInHand.Keys);
 
                 if(tilesInHand.Count > 0)
                 {
@@ -69,7 +69,7 @@ public class BaseMind : BaseUnit
                         for (int index = 0; index < keyList.Count; index++)
                         {
                             
-                            {
+                        
                                 propogaeTile = GridBugMang.Instance.GetTileAtPosition(keyList[index]);
 
                                 thisTile = GridBugMang.Instance.GetTileAtPosition(new Vector2(keyList[index].x + 1, keyList[index].y));
@@ -140,7 +140,7 @@ public class BaseMind : BaseUnit
                                     }
                                 }
                                 */
-                            }
+                        
 
                         }
                     }
