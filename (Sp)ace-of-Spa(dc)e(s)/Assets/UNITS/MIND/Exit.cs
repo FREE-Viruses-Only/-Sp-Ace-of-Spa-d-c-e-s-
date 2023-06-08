@@ -20,6 +20,8 @@ public class Exit : Tile
     private Tile propogaeTile;
     [SerializeField] private Tile TheWayOut;
 
+    [SerializeField] private BaseMind ExampleMachine;
+
     private void Bunk()
     {
         range = GridBugMang.Instance.width * 3;
@@ -63,28 +65,28 @@ public class Exit : Tile
                     if (thisTile != null && thisTile.isWalkable && !tilesInHand.ContainsKey(thisTile.transform.position))
                     {
                         tilesInHand.Add(thisTile.transform.position, i);
-                        thisTile.Exitage = 1000 / i+1;
+                        thisTile.Exitage = 10000 / i+1;
                     }
                     thisTile = GridBugMang.Instance.GetTileAtPosition(new Vector2(keyList[index].x - 1, keyList[index].y));
 
                     if (thisTile != null && thisTile.isWalkable && !tilesInHand.ContainsKey(thisTile.transform.position))
                     {
                         tilesInHand.Add(thisTile.transform.position, i);
-                        thisTile.Exitage = 1000 / i + 1;
+                        thisTile.Exitage = 10000 / i + 1;
                     }
                     thisTile = GridBugMang.Instance.GetTileAtPosition(new Vector2(keyList[index].x, keyList[index].y + 1));
 
                     if (thisTile != null && thisTile.isWalkable && !tilesInHand.ContainsKey(thisTile.transform.position))
                     {
                         tilesInHand.Add(thisTile.transform.position, i);
-                        thisTile.Exitage = 1000 / i + 1;
+                        thisTile.Exitage = 10000 / i + 1;
                     }
                     thisTile = GridBugMang.Instance.GetTileAtPosition(new Vector2(keyList[index].x, keyList[index].y - 1));
 
                     if (thisTile != null && thisTile.isWalkable && !tilesInHand.ContainsKey(thisTile.transform.position))
                     {
                         tilesInHand.Add(thisTile.transform.position, i);
-                        thisTile.Exitage = 1000 / i + 1;
+                        thisTile.Exitage = 10000 / i + 1;
                     }
 
 

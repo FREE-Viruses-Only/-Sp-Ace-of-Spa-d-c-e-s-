@@ -28,7 +28,7 @@ public class BaseMind : BaseUnit
         {
             if (this.OccupiedTile != null)
             {
-                this.OccupiedTile.Ballerage = 1000;
+                this.OccupiedTile.Ballerage = 10000;
 
                 //           for(int i = 0; )
                 //         RecieverGame = GridBugMang.Instance.GetTileAtPosition(new Vector2(this.OccupiedTile.transform.position.x + 1, this.OccupiedTile.transform.position.y));
@@ -77,28 +77,28 @@ public class BaseMind : BaseUnit
                             if (thisTile != null && thisTile.isWalkable && !tilesInHand.ContainsKey(thisTile.transform.position))
                             {
                                 tilesInHand.Add(thisTile.transform.position, i);
-                                ChangeBasketballQuality(thisTile.transform.position, 1000 / i + 1);
+                                ChangeBasketballQuality(thisTile.transform.position, 10000 / i + 1);
                             }
                             thisTile = GridBugMang.Instance.GetTileAtPosition(new Vector2(keyList[index].x - 1, keyList[index].y));
 
                             if (thisTile != null && thisTile.isWalkable && !tilesInHand.ContainsKey(thisTile.transform.position))
                             {
                                 tilesInHand.Add(thisTile.transform.position, i);
-                                ChangeBasketballQuality(thisTile.transform.position, 1000 / i + 1);
+                                ChangeBasketballQuality(thisTile.transform.position, 10000 / i + 1);
                             }
                             thisTile = GridBugMang.Instance.GetTileAtPosition(new Vector2(keyList[index].x, keyList[index].y + 1));
 
                             if (thisTile != null && thisTile.isWalkable && !tilesInHand.ContainsKey(thisTile.transform.position))
                             {
                                 tilesInHand.Add(thisTile.transform.position, i);
-                                ChangeBasketballQuality(thisTile.transform.position, 1000 / i + 1);
+                                ChangeBasketballQuality(thisTile.transform.position, 10000 / i + 1);
                             }
                             thisTile = GridBugMang.Instance.GetTileAtPosition(new Vector2(keyList[index].x, keyList[index].y - 1));
 
                             if (thisTile != null && thisTile.isWalkable && !tilesInHand.ContainsKey(thisTile.transform.position))
                             {
                                 tilesInHand.Add(thisTile.transform.position, i);
-                                ChangeBasketballQuality(thisTile.transform.position, 1000 / i + 1);
+                                ChangeBasketballQuality(thisTile.transform.position, 10000 / i + 1);
                             }
 
 
@@ -162,7 +162,7 @@ public class BaseMind : BaseUnit
         {
             if (this.OccupiedTile != null)
             {
-                this.OccupiedTile.Tetrahedronage = 1000;
+                this.OccupiedTile.Tetrahedronage = 10000;
 
                 //           for(int i = 0; )
                 //         RecieverGame = GridBugMang.Instance.GetTileAtPosition(new Vector2(this.OccupiedTile.transform.position.x + 1, this.OccupiedTile.transform.position.y));
@@ -198,28 +198,28 @@ public class BaseMind : BaseUnit
                             if (thisTile != null && thisTile.isWalkable && !tilesInHand.ContainsKey(thisTile.transform.position))
                             {
                                 tilesInHand.Add(thisTile.transform.position, i);
-                                ChangeTetQuality(thisTile.transform.position, 500 / i);
+                                ChangeTetQuality(thisTile.transform.position, 10000 / i + 1);
                             }
                             thisTile = GridBugMang.Instance.GetTileAtPosition(new Vector2(keyList[index].x - 1, keyList[index].y));
 
                             if (thisTile != null && thisTile.isWalkable && !tilesInHand.ContainsKey(thisTile.transform.position))
                             {
                                 tilesInHand.Add(thisTile.transform.position, i);
-                                ChangeTetQuality(thisTile.transform.position, 500 / i);
+                                ChangeTetQuality(thisTile.transform.position, 10000 / i + 1);
                             }
                             thisTile = GridBugMang.Instance.GetTileAtPosition(new Vector2(keyList[index].x, keyList[index].y + 1));
 
                             if (thisTile != null && thisTile.isWalkable && !tilesInHand.ContainsKey(thisTile.transform.position))
                             {
                                 tilesInHand.Add(thisTile.transform.position, i);
-                                ChangeTetQuality(thisTile.transform.position, 500 / i);
+                                ChangeTetQuality(thisTile.transform.position, 10000 / i + 1);
                             }
                             thisTile = GridBugMang.Instance.GetTileAtPosition(new Vector2(keyList[index].x, keyList[index].y - 1));
 
                             if (thisTile != null && thisTile.isWalkable && !tilesInHand.ContainsKey(thisTile.transform.position))
                             {
                                 tilesInHand.Add(thisTile.transform.position, i);
-                                ChangeTetQuality(thisTile.transform.position, 500 / i);
+                                ChangeTetQuality(thisTile.transform.position, 10000 / i + 1);
                             }
 
 
