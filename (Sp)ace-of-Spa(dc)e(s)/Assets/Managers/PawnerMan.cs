@@ -27,11 +27,13 @@ public class PawnerMan : MonoBehaviour
         var randomPrefab = thisFuckinGuy;
         var spawnedMEAT = Instantiate(randomPrefab);
         var randomSpawnTile = GridBugMang.Instance.GetManSpawnTile();
-        spawnedMEAT.tetraNeed = Random.Range(0, 100);
-        spawnedMEAT.ballerNeed = Random.Range(0, 100);
-        spawnedMEAT.exitNeed = Random.Range(0, 15);
-        spawnedMEAT.moners = Random.Range(1, 1000);
+        spawnedMEAT.tetraNeed = Random.Range(0, 15);
+        spawnedMEAT.ballerNeed = Random.Range(0, 15);
+        spawnedMEAT.exitNeed = Random.Range(0, 1000);
+        spawnedMEAT.moners = Random.Range(1, 20);
         spawnedMEAT.dexMod = Random.Range(1, 5);
+        spawnedMEAT.gumpMod = Random.Range(1, 5);
+
 
 
         spawnedMEAT.transform.position = randomSpawnTile;
@@ -47,6 +49,7 @@ public class PawnerMan : MonoBehaviour
         wunko++;
 
         ManManager.Instance.patrons.Add(spawnedMEAT);
+        ManManager.Instance.things.Add(spawnedMEAT);
     }
 
     public void spawnMenBaller()
@@ -78,6 +81,7 @@ public class PawnerMan : MonoBehaviour
         pawnThis = spawnedMind;
 
         ManManager.Instance.machines.Add(spawnedMind);
+        ManManager.Instance.things.Add(spawnedMind);
     }
 
 }

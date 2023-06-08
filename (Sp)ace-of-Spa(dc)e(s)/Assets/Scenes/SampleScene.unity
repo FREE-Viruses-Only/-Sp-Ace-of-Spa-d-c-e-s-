@@ -5463,6 +5463,10 @@ PrefabInstance:
       propertyPath: isWalkable
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7625291529413288344, guid: f9a2a1066f5b040449471280e5d25706, type: 3}
+      propertyPath: ExampleMachine
+      value: 
+      objectReference: {fileID: 520284714}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9a2a1066f5b040449471280e5d25706, type: 3}
 --- !u!4 &6929802225262821969 stripped

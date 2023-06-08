@@ -89,7 +89,7 @@ public class BaseMEAT : BaseUnit
                     this.exitNeed += 10;
                 }
 
-                CurrentOption.quality = Mathf.FloorToInt(((this.tetraNeed * (Mathf.Pow(CurrentOption.Tetrahedronage, 1.2f)))) + ((this.ballerNeed * (Mathf.Pow(CurrentOption.Ballerage, 1.2f)))) + ((this.exitNeed * (Mathf.Pow(CurrentOption.Exitage, 1.2f)))));
+                CurrentOption.quality = Mathf.FloorToInt(((this.tetraNeed * (Mathf.Pow(CurrentOption.Tetrahedronage, 1.5f)))) + ((this.ballerNeed * (Mathf.Pow(CurrentOption.Ballerage, 1.5f)))) + ((this.exitNeed * (Mathf.Pow(CurrentOption.Exitage, 1.5f)))));
 
                 RoulletteWheel += CurrentOption.quality;
     //            CurrentOption.quality;
