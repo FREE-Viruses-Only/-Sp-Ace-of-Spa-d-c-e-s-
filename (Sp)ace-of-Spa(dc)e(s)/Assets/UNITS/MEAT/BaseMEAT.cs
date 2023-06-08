@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using Unity.Mathematics;
 
 
 public class BaseMEAT : BaseUnit
@@ -88,7 +89,7 @@ public class BaseMEAT : BaseUnit
                     this.exitNeed += 10;
                 }
 
-                CurrentOption.quality = ((this.tetraNeed * (CurrentOption.Tetrahedronage ^ 2))) + ((this.ballerNeed * (CurrentOption.Ballerage ^ 2))) + ((this.exitNeed * (CurrentOption.Exitage ^ 2)));
+                CurrentOption.quality = Mathf.FloorToInt(((this.tetraNeed * (Mathf.Pow(CurrentOption.Tetrahedronage, 1.2f)))) + ((this.ballerNeed * (Mathf.Pow(CurrentOption.Ballerage, 1.2f)))) + ((this.exitNeed * (Mathf.Pow(CurrentOption.Exitage, 1.2f)))));
 
                 RoulletteWheel += CurrentOption.quality;
     //            CurrentOption.quality;

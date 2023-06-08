@@ -20,6 +20,8 @@ public class Tile : MonoBehaviour
 
     public int quality;
 
+    public bool dontFuckinDoIt;
+
     public virtual void Init(int x, int y)
     {
         ;
@@ -41,6 +43,8 @@ public class Tile : MonoBehaviour
     {
         if (GameManager.Instance.GameState != GameState.Liminality) return;
 
+        if (NOTOUCH.Instance.touching == true) return;
+
         if (PawnerMan.Instance.pawnerTime)
         {
             SetUnit(PawnerMan.Instance.pawnThis);
@@ -56,11 +60,15 @@ public class Tile : MonoBehaviour
             }
             else
             {
-                if (ManManager.Instance.SelectedMan != null)
+                if (Men.Instance.explodeMode == true)
                 {
                     var enemy = (BaseMind)OccupiedUnit;
-                    Destroy(enemy.gameObject);
+           //         
+                    this.isWalkable = true;
+                    this.OccupiedUnit = null;
                     ManManager.Instance.SetSelectedMan(null);
+                    ManManager.Instance.machines.Remove(enemy);
+                    Destroy(enemy.gameObject);
                 }
             }
         }

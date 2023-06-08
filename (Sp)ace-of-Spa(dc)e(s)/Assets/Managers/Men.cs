@@ -40,7 +40,7 @@ public class Men : MonoBehaviour
     public Image timeMage;
 
     public bool explodeMode;
-    public GameObject explodeButon;
+    public GameObject explodeButton;
     public Image explimage;
     
     [SerializeField] private TextMeshProUGUI timeDiplay;
@@ -76,6 +76,7 @@ public class Men : MonoBehaviour
 
         timeMage = timeSwitchSwitch.GetComponent<Image>();
         var tempColor = timeMage.color;
+
 
         foreach (GameObject bit in menuBits)
         {
@@ -242,14 +243,16 @@ public class Men : MonoBehaviour
         if (!explodeMode)
         {
             tempColor.a = 1f;
-            explodeButon.color = tempColor;
+            explimage.color = tempColor;
 
-            explodeMode = true
+            explodeMode = true;
         }
         else
         {
             tempColor.a = 0f;
-            explimage
+            explimage.color = tempColor;
+
+            explodeMode = false;
         }
     }
 

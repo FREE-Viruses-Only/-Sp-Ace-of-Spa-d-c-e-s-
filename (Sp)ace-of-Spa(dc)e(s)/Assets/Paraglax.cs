@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class Paraglax : MonoBehaviour
 {
+    public static Paraglax Instance;
+
+    [SerializeField]  public GameObject friend;
+
+    void Awake()
+    {
+        Instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +22,13 @@ public class Paraglax : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void goHereFriend()
+    {
+        this.transform.position = friend.transform.position;
+        Vector3 Coaster = this.transform.position;
+        Coaster.z = 1;
+        this.transform.position = Coaster;
     }
 }

@@ -7,6 +7,14 @@ public class cramra : MonoBehaviour
     [SerializeField] private int speed;
     [SerializeField] private float paraglax;
     [SerializeField] private GameObject paraglaxThis;
+    [SerializeField] private Camera cram;
+    private float fov;
+
+    void Start()
+    {
+        Paraglax.Instance.Invoke("goHereFriend", 0.5f);
+
+    }
 
     void Update()
     {
@@ -37,6 +45,21 @@ public class cramra : MonoBehaviour
             wos.x -= paraglax * speed * Time.deltaTime;
 
         }
+
+        //var fov = this.GetComponent<Camera>();
+
+        if (Input.GetAxis("Mouse ScrollWheel") != 0)
+        {
+            Camera.main.orthographicSize += Input.GetAxis("Mouse ScrollWheel") * -200 * Time.deltaTime;
+
+        }
+
+
+      //  Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, this.transform.position.y, Camera.main.transform.position.z + fov);
+
+
+
+     //   this.GetComponent<Camera>().main.fieldOfView = fov;
 
         //   if (Input.GetAxis("Mouse ScrollWheel"))
         {

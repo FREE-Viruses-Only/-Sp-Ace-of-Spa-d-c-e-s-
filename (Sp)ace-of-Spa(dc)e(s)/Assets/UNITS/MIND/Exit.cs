@@ -13,11 +13,16 @@ public class Exit : Tile
 
     public int range;
 
+    private Dictionary<Vector2, float> tilesInHand = new Dictionary<Vector2, float>();
+    private Dictionary<Vector2, float> tileOUT = new Dictionary<Vector2, float>();
+    private List<Vector2> keyList = new List<Vector2>();
+    private Tile thisTile;
+    private Tile propogaeTile;
     [SerializeField] private Tile TheWayOut;
 
     private void Bunk()
     {
-        range = GridBugMang.Instance.width * 2;
+        range = GridBugMang.Instance.width * 3;
     }
 
     public void ExitAdvertize()
@@ -29,6 +34,79 @@ public class Exit : Tile
         //       RecieverGame.Ballerage = 100;
 
         Bunk();
+
+
+
+            if (!tilesInHand.ContainsKey(this.transform.position))
+            {
+                tilesInHand.Add(this.transform.position, 0);
+            }
+
+            //  tileOUT = tilesInHand;
+            // keyList = new List<Vector2>(this.tilesInHand.Keys);
+
+            if (tilesInHand.Count > 0)
+            {
+                for (int i = 1; i <= range; i++)
+                {
+
+                    keyList = new List<Vector2>(this.tilesInHand.Keys);
+
+                    for (int index = 0; index < keyList.Count; index++)
+                    {
+
+
+                    propogaeTile = GridBugMang.Instance.GetTileAtPosition(keyList[index]);
+
+                    thisTile = GridBugMang.Instance.GetTileAtPosition(new Vector2(keyList[index].x + 1, keyList[index].y));
+
+                    if (thisTile != null && thisTile.isWalkable && !tilesInHand.ContainsKey(thisTile.transform.position))
+                    {
+                        tilesInHand.Add(thisTile.transform.position, i);
+                        thisTile.Exitage = 1000 / i+1;
+                    }
+                    thisTile = GridBugMang.Instance.GetTileAtPosition(new Vector2(keyList[index].x - 1, keyList[index].y));
+
+                    if (thisTile != null && thisTile.isWalkable && !tilesInHand.ContainsKey(thisTile.transform.position))
+                    {
+                        tilesInHand.Add(thisTile.transform.position, i);
+                        thisTile.Exitage = 1000 / i + 1;
+                    }
+                    thisTile = GridBugMang.Instance.GetTileAtPosition(new Vector2(keyList[index].x, keyList[index].y + 1));
+
+                    if (thisTile != null && thisTile.isWalkable && !tilesInHand.ContainsKey(thisTile.transform.position))
+                    {
+                        tilesInHand.Add(thisTile.transform.position, i);
+                        thisTile.Exitage = 1000 / i + 1;
+                    }
+                    thisTile = GridBugMang.Instance.GetTileAtPosition(new Vector2(keyList[index].x, keyList[index].y - 1));
+
+                    if (thisTile != null && thisTile.isWalkable && !tilesInHand.ContainsKey(thisTile.transform.position))
+                    {
+                        tilesInHand.Add(thisTile.transform.position, i);
+                        thisTile.Exitage = 1000 / i + 1;
+                    }
+
+
+
+                }
+            }
+
+            
+
+            foreach (KeyValuePair<Vector2, float> CLEAR in tilesInHand)
+            {
+                GridBugMang.Instance.GetTileAtPosition(CLEAR.Key).proporpisagate = false;
+            }
+
+            tilesInHand.Clear();
+        }
+
+
+
+
+
+        /*
 
             for (int x = -range; x <= range; x++)
             {
@@ -45,6 +123,7 @@ public class Exit : Tile
 
                 }
             }
+        */
     }
 
     private void ChangeExitQuality(Vector2 gridPosition, float changeBy)
